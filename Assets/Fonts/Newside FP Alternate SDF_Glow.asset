@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Newside FP Alternate SDF
+  m_Name: Newside FP Alternate SDF_Glow
   m_EditorClassIdentifier: 
   m_Version: 1.1.0
   m_FaceInfo:
@@ -2715,7 +2715,7 @@ Material:
     - _GlowInner: 0.05
     - _GlowOffset: 0
     - _GlowOuter: 1
-    - _GlowPower: 0
+    - _GlowPower: 1
     - _GradientScale: 6
     - _LightAngle: 6.28
     - _MaskSoftnessX: 0
