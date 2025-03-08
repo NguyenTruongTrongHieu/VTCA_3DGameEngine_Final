@@ -5,6 +5,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
 
+    
+
 
     [Header("Move Variables")]
     public float speed = 12.0f;
@@ -34,12 +36,14 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        anim = GetComponentInChildren<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        anim = GetComponentInChildren<Animator>();
+
         AimDownSide();
         AimingActions();
 
@@ -100,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
                 // Tăng tốc độ di chuyển
                 speed = 10.0f;
 
-                anim.SetFloat("Speed", 0.5f);
+                anim.SetFloat("Speed", 1.0f);
             }
             else
             {
@@ -153,15 +157,17 @@ public class PlayerMovement : MonoBehaviour
             isWalking = true;
             Debug.Log("Walking While Aiming");
 
-            anim.SetFloat("Aiming Speed", 0.5f);
+            anim.SetFloat("Aiming Speed", 1.0f);
+            Debug.Log("Aiming Speed 1.0f");
 
             lastPosition = gameObject.transform.position;
         }
 
-        else
+        else if (lastPosition == gameObject.transform.position && isAiming == true)
         {
             isWalking = false;
             anim.SetFloat("Aiming Speed", 0.0f);
+            Debug.Log("Aiming Speed 0.0f");
         }
     }
 }
