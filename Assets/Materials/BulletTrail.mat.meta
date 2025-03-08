@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Swat/Materials/Ch15_body.mat.meta
+guid: 3596135cd4f7e5e4cbec3625f4a9d164
+========
+guid: c1dcfca62b5a2ae459efe93f7919fb96
+>>>>>>>> main:Assets/Materials/BulletTrail.mat.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

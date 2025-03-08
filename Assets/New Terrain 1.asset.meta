@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Swat/Materials/Ch15_body1.mat.meta
+guid: 03d4e1c2be996664bb207c64bce1e549
+========
+guid: d0a805fb430ecbf4eb97517792ea966c
+>>>>>>>> main:Assets/New Terrain 1.asset.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 15600000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
