@@ -14,5 +14,6 @@ public class TurnOffPanelPlay : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         gameObject.SetActive(false);
+        AudioManager.audioInstance.PlaySFX("ButtonClick");
     }
 }
