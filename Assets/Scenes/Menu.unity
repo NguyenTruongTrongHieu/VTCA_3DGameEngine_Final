@@ -290,11 +290,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1481233061 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5735100458435573563, guid: a19c23bde8d0c694289b0d2dd3dea1ea, type: 3}
-  m_PrefabInstance: {fileID: 1753093404499159772}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1757099985
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,46 +623,6 @@ PrefabInstance:
     - target: {fileID: 1278945744256885953, guid: a19c23bde8d0c694289b0d2dd3dea1ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3503118494999326614, guid: a19c23bde8d0c694289b0d2dd3dea1ea, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3503118494999326614, guid: a19c23bde8d0c694289b0d2dd3dea1ea, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3503118494999326614, guid: a19c23bde8d0c694289b0d2dd3dea1ea, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3503118494999326614, guid: a19c23bde8d0c694289b0d2dd3dea1ea, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1481233061}
-    - target: {fileID: 3503118494999326614, guid: a19c23bde8d0c694289b0d2dd3dea1ea, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1481233061}
-    - target: {fileID: 3503118494999326614, guid: a19c23bde8d0c694289b0d2dd3dea1ea, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3503118494999326614, guid: a19c23bde8d0c694289b0d2dd3dea1ea, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3503118494999326614, guid: a19c23bde8d0c694289b0d2dd3dea1ea, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3503118494999326614, guid: a19c23bde8d0c694289b0d2dd3dea1ea, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3503118494999326614, guid: a19c23bde8d0c694289b0d2dd3dea1ea, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5735100458435573563, guid: a19c23bde8d0c694289b0d2dd3dea1ea, type: 3}
       propertyPath: m_Name

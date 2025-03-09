@@ -47,7 +47,7 @@ public class HostageHealth : Health
         Destroy(gameObject, 1.5f);
         alive = false;
         animator.SetBool(isDeadHash, true);
-        Debug.Log("Enemy Die");
+        Debug.Log("Hostage Die");
     }
 
     private void UpdateSliderHP()

@@ -1634,7 +1634,7 @@ GameObject:
   - component: {fileID: 728391794}
   m_Layer: 3
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2614,6 +2614,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1198118792}
+  - component: {fileID: 1198118793}
   m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
@@ -2636,6 +2637,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1207960690}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1198118793
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198118791}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1207960683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2651,6 +2673,7 @@ GameObject:
   - component: {fileID: 1207960686}
   - component: {fileID: 1207960685}
   - component: {fileID: 1207960691}
+  - component: {fileID: 1207960692}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2808,6 +2831,18 @@ MonoBehaviour:
   firstAidImage: {fileID: 581348007}
   firstAidText: {fileID: 572104402}
   pickingButton: {fileID: 701632203}
+--- !u!114 &1207960692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207960683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 202d04f739263c848bc98da360810c6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1209479402
 PrefabInstance:
   m_ObjectHideFlags: 0
