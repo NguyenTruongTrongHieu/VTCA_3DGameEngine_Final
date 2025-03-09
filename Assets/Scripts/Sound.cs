@@ -4,5 +4,5 @@ using UnityEngine;
 public class Sound
 {
     public string name;
-    public AudioClip audioCLip;
+    public AudioClip audioClip;
 }

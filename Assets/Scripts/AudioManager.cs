@@ -48,7 +48,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        audioSource.clip = music.audioCLip;
+        audioSource.clip = music.audioClip;
         audioSource.loop = true;
         audioSource.Play();
     }
@@ -63,6 +63,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        sfxSource.PlayOneShot(soundEffect.audioCLip);
+        sfxSource.PlayOneShot(soundEffect.audioClip);
     }
 }
