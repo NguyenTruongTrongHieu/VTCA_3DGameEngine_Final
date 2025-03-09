@@ -11,6 +11,8 @@ TagManager:
   - RescuePosition
   - HeadEnemy
   - Item
+  - Street
+  - Floor
   layers:
   - Default
   - TransparentFX

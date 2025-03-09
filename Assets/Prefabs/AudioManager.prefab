@@ -54,6 +54,10 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: a765109e0e9954bbfbec6ff4a77c527b, type: 3}
   - name: ButtonHighlight
     audioClip: {fileID: 8300000, guid: 4f46dc3cf83214e04ab1b00918f474a5, type: 3}
+  - name: FootstepInStreet
+    audioClip: {fileID: 8300000, guid: a2b4d523add5fa9498c8e22ef453fbd6, type: 3}
+  - name: FootstepInFloor
+    audioClip: {fileID: 8300000, guid: 55bf2c329794ac84fb8d429649db4824, type: 3}
 --- !u!1 &6966777630406760710
 GameObject:
   m_ObjectHideFlags: 0
