@@ -3510,7 +3510,7 @@ MonoBehaviour:
   shootingDelay: 0.15
   bulletsPerBurst: 3
   burstBulletLeft: 0
-  spreadIntensity: 0.005
+  spreadIntensity: 0
   currentShootingMode: 2
   currentWeaponType: 0
   bulletPrefab: {fileID: 8540748198045017097, guid: 71b6774505a088a4d920abb3ce57437e, type: 3}
@@ -3810,6 +3810,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6583618468263491802, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 330585545}
     - target: {fileID: 8676669934166288877, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
       propertyPath: m_Name
       value: GameCanvas
