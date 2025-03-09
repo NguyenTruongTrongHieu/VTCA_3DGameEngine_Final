@@ -7,6 +7,8 @@ public class PlayerAudio : MonoBehaviour
     private bool isMoving;
     private bool isSprinting;
 
+    private float delayTime = 0f; 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -38,31 +40,56 @@ public class PlayerAudio : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Street"))
+        if (collision.gameObject.CompareTag("Street") && isMoving)
         {
             Debug.Log("street");
             AudioManager.audioInstance.PlaySFX("FootstepInStreet");
         }
 
-        if (collision.gameObject.CompareTag("Floor"))
+        if (collision.gameObject.CompareTag("Floor") && isMoving)
         {
             Debug.Log("floor");
             AudioManager.audioInstance.PlaySFX("FootstepInFloor");
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Street"))
+        if (other.gameObject.CompareTag("Street") && isMoving)
         {
             Debug.Log("street");
-            AudioManager.audioInstance.PlaySFX("FootstepInStreet");
+            SetDelayTimeForSound("FootstepInStreet", 0.05f);
+            //AudioManager.audioInstance.PlaySFX("FootstepInStreet");
+        }
+        else if (other.gameObject.CompareTag("Street") && isSprinting)
+        {
+            Debug.Log("street");
+            SetDelayTimeForSound("FootstepInStreet", 0.01f);
         }
 
-        if (other.gameObject.CompareTag("Floor"))
+        if (other.gameObject.CompareTag("Floor") && isMoving)
         {
             Debug.Log("floor");
-            AudioManager.audioInstance.PlaySFX("FootstepInFloor");
+            SetDelayTimeForSound("FootstepInFloor", 0.05f);
+            //AudioManager.audioInstance.PlaySFX("FootstepInFloor");
+        }
+        else if (other.gameObject.CompareTag("Floor") && isSprinting)
+        {
+            Debug.Log("floor");
+            SetDelayTimeForSound("FootstepInFloor", 0.01f);
+        }
+    }
+
+    void SetDelayTimeForSound(string soundName, float time)
+    {
+        if (delayTime < time)
+        {
+            delayTime += Time.deltaTime;
+        }
+        else
+        {
+            AudioManager.audioInstance.PlaySFX(soundName);
+            delayTime = 0f;
         }
     }
 }
