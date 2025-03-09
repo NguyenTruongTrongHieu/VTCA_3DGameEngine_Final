@@ -23,11 +23,18 @@ public class MainMenu : MonoBehaviour
 
     public void OnPlay()
     {
+        SetSfxButton();
         SceneManager.LoadScene(1);
     }
 
-    public void OnExit() 
+    public void OnExit()
     {
+        SetSfxButton();
         Application.Quit();
+    }
+
+    public void SetSfxButton()
+    {
+        AudioManager.audioInstance.PlaySFX("ButtonClick");
     }
 }

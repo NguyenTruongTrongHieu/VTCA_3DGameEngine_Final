@@ -18,19 +18,12 @@ public class HighLightButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
     }
 
-    void OnPointerIn()
-    {
-    }
-
-    void OnPointerOut()
-    {
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
 
         TextMeshProUGUI text = GetComponentInChildren<TextMeshProUGUI>();
         text.font = fontAssetHighlight;
+        AudioManager.audioInstance.PlaySFX("ButtonHighlight");
     }
 
     public void OnPointerExit(PointerEventData eventData)
