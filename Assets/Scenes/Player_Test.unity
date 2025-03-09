@@ -1549,7 +1549,7 @@ MonoBehaviour:
   shootingDelay: 0.15
   bulletsPerBurst: 3
   burstBulletLeft: 0
-  spreadIntensity: 0.05
+  spreadIntensity: 0.005
   currentShootingMode: 0
   bulletPrefab: {fileID: 764421058}
   bulletSpawnPoint: {fileID: 1389853388}
@@ -3411,7 +3411,7 @@ MonoBehaviour:
   shootingDelay: 0.15
   bulletsPerBurst: 3
   burstBulletLeft: 0
-  spreadIntensity: 0.05
+  spreadIntensity: 0.005
   currentShootingMode: 2
   bulletPrefab: {fileID: 8540748198045017097, guid: 71b6774505a088a4d920abb3ce57437e, type: 3}
   bulletSpawnPoint: {fileID: 567362625}

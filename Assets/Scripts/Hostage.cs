@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class Hostage : MonoBehaviour
 {
     [SerializeField] private Vector3 RescuePosition;
+    [SerializeField] private float rescueDistance = 2f;
     [SerializeField] private Transform player;
     public bool isRescue;
     private NavMeshAgent agent;
@@ -54,6 +55,15 @@ public class Hostage : MonoBehaviour
                 BeingRescue();
             }
         }
+
+        if (Vector3.Distance(player.position, transform.position) <= rescueDistance)
+        {
+            canRescue = true;
+        }
+        else
+        {
+            canRescue = false;
+        }
     }
 
     private void RotateToPlayer()
@@ -73,22 +83,6 @@ public class Hostage : MonoBehaviour
         canRescue = false;//Da cuu roi thi khong cuu nua
         isRescue = true;
         DropItem();
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            canRescue = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            canRescue = false;
-        }
     }
 
     void DropItem()
