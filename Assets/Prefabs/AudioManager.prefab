@@ -62,6 +62,10 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 19f493abd7d535e42bbca8cb89c4c504, type: 3}
   - name: PistolSingleGun
     audioClip: {fileID: 8300000, guid: 70d1dd10d0cf63b4ab9ac6f464870ee5, type: 3}
+  - name: FootstepOnStreet
+    audioClip: {fileID: 8300000, guid: 326692c732cef1243a6082059563e4cf, type: 3}
+  - name: FootstepOnFloor
+    audioClip: {fileID: 8300000, guid: de494ff8b7853d143859d8ccbfbd290e, type: 3}
 --- !u!1 &6966777630406760710
 GameObject:
   m_ObjectHideFlags: 0

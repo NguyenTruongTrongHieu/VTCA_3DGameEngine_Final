@@ -58,13 +58,21 @@ public class PlayerAudio : MonoBehaviour
         if (other.gameObject.CompareTag("Street") && isMoving)
         {
             Debug.Log("street");
-            SetDelayTimeForSound("FootstepInStreet", 0.05f);
+            //SetDelayTimeForSound("FootstepInStreet", 0.05f);
+            if (!AudioManager.audioInstance.sfxSource.isPlaying)
+            {
+                AudioManager.audioInstance.PlaySFX("FootstepInStreet");
+            }
             //AudioManager.audioInstance.PlaySFX("FootstepInStreet");
         }
         else if (other.gameObject.CompareTag("Street") && isSprinting)
         {
             Debug.Log("street");
-            SetDelayTimeForSound("FootstepInStreet", 0.01f);
+            //SetDelayTimeForSound("FootstepInStreet", 0.01f);
+            if (!AudioManager.audioInstance.sfxSource.isPlaying)
+            {
+                AudioManager.audioInstance.PlaySFX("FootstepOnStreet");
+            }
         }
 
         if (other.gameObject.CompareTag("Floor") && isMoving)
@@ -80,7 +88,11 @@ public class PlayerAudio : MonoBehaviour
         else if (other.gameObject.CompareTag("Floor") && isSprinting)
         {
             Debug.Log("floor");
-            SetDelayTimeForSound("FootstepInFloor", 1f);
+            //SetDelayTimeForSound("FootstepInFloor", 1f);
+            if (!AudioManager.audioInstance.sfxSource.isPlaying)
+            {
+                AudioManager.audioInstance.PlaySFX("FootstepOnFloor");
+            }
         }
     }
 
