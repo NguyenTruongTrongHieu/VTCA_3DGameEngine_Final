@@ -8,7 +8,7 @@ public class Hostage : MonoBehaviour
     [SerializeField] private Vector3 RescuePosition;
     [SerializeField] private float rescueDistance = 2f;
     [SerializeField] private Transform player;
-    [SerializeField] private Button rescueButton;
+    
     public bool isRescue;
     private NavMeshAgent agent;
     private CharacterController controller;
@@ -25,7 +25,6 @@ public class Hostage : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        rescueButton = GameObject.FindGameObjectWithTag("RescueButton").GetComponent<Button>();
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
         controller = GetComponent<CharacterController>();
@@ -62,12 +61,10 @@ public class Hostage : MonoBehaviour
         if (Vector3.Distance(player.position, transform.position) <= rescueDistance)
         {
             canRescue = true;
-            rescueButton.gameObject.SetActive(true);
         }
         else
         {
             canRescue = false;
-            rescueButton.gameObject.SetActive(false);
         }
     }
 

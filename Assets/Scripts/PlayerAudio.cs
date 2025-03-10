@@ -70,13 +70,17 @@ public class PlayerAudio : MonoBehaviour
         if (other.gameObject.CompareTag("Floor") && isMoving)
         {
             Debug.Log("floor");
-            SetDelayTimeForSound("FootstepInFloor", 0.05f);
+            //SetDelayTimeForSound("FootstepInFloor", 0.05f);
+            if (!AudioManager.audioInstance.sfxSource.isPlaying)
+            {
+                AudioManager.audioInstance.PlaySFX("FootstepInFloor");
+            }
             //AudioManager.audioInstance.PlaySFX("FootstepInFloor");
         }
         else if (other.gameObject.CompareTag("Floor") && isSprinting)
         {
             Debug.Log("floor");
-            SetDelayTimeForSound("FootstepInFloor", 0.01f);
+            SetDelayTimeForSound("FootstepInFloor", 1f);
         }
     }
 
