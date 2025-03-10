@@ -14,13 +14,12 @@ public class PlayerRescue : MonoBehaviour
     {
         rescueButton = GameObject.FindWithTag("RescueButton").GetComponent<Button>();
         rescueButton.gameObject.SetActive(false);
-
-        GameObject.FindGameObjectsWithTag("Hostage", hostages);
     }
 
     // Update is called once per frame
     void Update()
     {
+        GameObject.FindGameObjectsWithTag("Hostage", hostages);
         foreach (GameObject hostage in hostages) 
         {
             if (Vector3.Distance(transform.position, hostage.transform.position) <= rescueDistance)
