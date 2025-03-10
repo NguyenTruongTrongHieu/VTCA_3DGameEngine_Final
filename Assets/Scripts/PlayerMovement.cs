@@ -119,6 +119,18 @@ public class PlayerMovement : MonoBehaviour
 
             lastPosition = gameObject.transform.position;
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && isAiming == false)
+        {
+            Debug.Log("Shooting");
+            anim.SetTrigger("Shoot");
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && isAiming == false)
+        {
+            Debug.Log("Reloading");
+            anim.SetTrigger("Reload");
+        }
     }
 
     private void AimDownSide()
