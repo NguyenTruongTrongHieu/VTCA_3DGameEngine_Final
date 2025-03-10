@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
         // Nếu player di chuyển
-        if (lastPosition != gameObject.transform.position)
+        if (lastPosition != gameObject.transform.position && isAiming == false)
         {
             isWalking = true;
             Debug.Log("Walking");
@@ -170,16 +170,14 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Walking While Aiming");
 
             anim.SetFloat("Aiming Speed", 1.0f);
-            Debug.Log("Aiming Speed 1.0f");
 
             lastPosition = gameObject.transform.position;
         }
 
-        else if (lastPosition == gameObject.transform.position && isAiming == true)
+        else 
         {
             isWalking = false;
             anim.SetFloat("Aiming Speed", 0.0f);
-            Debug.Log("Aiming Speed 0.0f");
         }
     }
 }
