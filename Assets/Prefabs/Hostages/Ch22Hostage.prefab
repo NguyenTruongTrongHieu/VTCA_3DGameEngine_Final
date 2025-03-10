@@ -122,7 +122,6 @@ GameObject:
   - component: {fileID: 4119058455113572967}
   - component: {fileID: 3349859976431207612}
   - component: {fileID: 6824454845132745924}
-  - component: {fileID: 7768793741596355485}
   - component: {fileID: 3552671442828502971}
   - component: {fileID: -7686059899510304429}
   m_Layer: 0
@@ -168,13 +167,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2.5
-  m_Radius: 0.5
+  m_Height: 1.5
+  m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.01, z: 0}
+  m_Center: {x: 0, y: 0.73, z: 0}
 --- !u!195 &6824454845132745924
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -197,29 +196,6 @@ NavMeshAgent:
   m_BaseOffset: 0.03
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!136 &7768793741596355485
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2816307667786074423}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.19, z: 0}
 --- !u!114 &3552671442828502971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RescuePosition: {x: 0, y: 0, z: 0}
+  rescueDistance: 2
   player: {fileID: 0}
   isRescue: 0
   dropItems:

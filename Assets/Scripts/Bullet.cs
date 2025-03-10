@@ -50,6 +50,7 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.CompareTag("HeadEnemy"))
         {
+            Debug.Log("Head hit");
             EnemyHealth enemy = collision.gameObject.GetComponentInParent<EnemyHealth>();
             enemy.TakeDamage(1000);
             if (enemy.currentHealth <= 0)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Security.Cryptography;
 using UnityEngine;
@@ -28,7 +29,14 @@ public class Weapon : MonoBehaviour
         Auto
     }
 
+    public enum WeaponType
+    { 
+        Machine,
+        Pistol
+    }
+
     public ShootingMode currentShootingMode;
+    public WeaponType currentWeaponType;
 
     [Header("Bullet and shoot")]
     [SerializeField] private GameObject bulletPrefab;
@@ -49,6 +57,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Vector3 posWhenShooting;
     private Vector3 startPosition;
 
+    [Header("Sound effect")]
+    [SerializeField] private AudioSource audioSource;
+
     private void Awake()
     {
         readyToShoot = true;
@@ -58,6 +69,8 @@ public class Weapon : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         startPosition = transform.localPosition;
         //isPlayer = gameObject.tag == "Player" ? true : false;
 
@@ -128,6 +141,7 @@ public class Weapon : MonoBehaviour
             Invoke("FireWeapon", shootingDelay);
         }
 
+        AddSound();
     }
 
     private void ResetShot()
@@ -170,6 +184,20 @@ public class Weapon : MonoBehaviour
 
         //returning the shooting direction and spread
         return direction + new Vector3(x,y,0);
+    }
+
+    void AddSound()
+    {
+        if ((currentShootingMode == ShootingMode.Auto || currentShootingMode == ShootingMode.Burst) && currentWeaponType == WeaponType.Machine)
+        {
+            AudioClip clip = AudioManager.audioInstance.sfxSounds.Find(x => x.name == "MachineAutoGun").audioClip;
+            audioSource.PlayOneShot(clip);
+        }
+        else if (currentShootingMode == ShootingMode.Single && currentWeaponType == WeaponType.Pistol)
+        {
+            AudioClip clip = AudioManager.audioInstance.sfxSounds.Find(x => x.name == "PistolSingleGun").audioClip;
+            audioSource.PlayOneShot(clip);
+        }
     }
 
     IEnumerator AutoShootForEnemy(float waitingTime)
