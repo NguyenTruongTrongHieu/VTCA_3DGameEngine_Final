@@ -611,12 +611,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf868debaab7344b87caec2ee4b8cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseDistance: 50
-  targetDistance: 50
-  attackRange: 50
-  returnRange: 30
-  wanderRange: 5
-  stoppingDistanceWithPlayer: 50
+  chaseDistance: 20
+  targetDistance: 20
+  attackRange: 20
+  returnRange: 20
+  wanderRange: 2
+  stoppingDistanceWithPlayer: 20
   visionRaycastRange: 100
   isTargetToPlayer: 0
   chasingToPlayerWhenSaw: 0
@@ -639,7 +639,7 @@ MonoBehaviour:
   healingRate: 0
   timeWaitForHealing: 1
   healthSlider: {fileID: 7397149092423644526}
-  cinemachineCamera: {fileID: 0}
+  mainCamera: {fileID: 0}
   dropItems:
   - {fileID: 11400000, guid: 20848a44fcdbcc746a7d8332f426ebf8, type: 2}
   alive: 0
