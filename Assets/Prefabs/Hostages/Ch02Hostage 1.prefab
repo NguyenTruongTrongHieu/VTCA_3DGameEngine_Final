@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RescuePosition: {x: 0, y: 0, z: 0}
-  rescueDistance: 3
+  rescueDistance: 2
   player: {fileID: 0}
   isRescue: 0
   dropItems:

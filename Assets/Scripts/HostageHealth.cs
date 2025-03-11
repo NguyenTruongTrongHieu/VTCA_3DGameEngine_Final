@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HostageHealth : Health
 {
     [SerializeField] private Slider healthSlider;//Thanh mau
-    [SerializeField] private CinemachineFreeLookModifier cinemachineCamera;
+    [SerializeField] private Camera mainCamera;
 
     private int isDeadHash;
     private Animator animator;
@@ -16,7 +16,7 @@ public class HostageHealth : Health
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     new void Start()
     {
-        cinemachineCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CinemachineFreeLookModifier>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         animator = GetComponentInChildren<Animator>();
         isDeadHash = Animator.StringToHash("isDead");
 
@@ -28,7 +28,7 @@ public class HostageHealth : Health
     // Update is called once per frame
     void Update()
     {
-
+        healthSlider.transform.LookAt(mainCamera.transform);
     }
 
     public new void TakeDamage(float damage)
