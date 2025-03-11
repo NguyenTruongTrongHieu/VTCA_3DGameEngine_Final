@@ -7,8 +7,8 @@ public class SpawnerHumanScriptable : ScriptableObject
     public string tag;
     public GameObject humanPrefab;
 
-    public void SpawnEntity()
+    public void SpawnEntity(Vector3 position)
     { 
-        Instantiate(humanPrefab);
+        Instantiate(humanPrefab, position, Quaternion.identity);
     }
 }

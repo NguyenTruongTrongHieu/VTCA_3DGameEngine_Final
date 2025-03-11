@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d9cbf4b4e6d914ab34a919ace89fa7, type: 3}
   m_Name: Ch01Hostage
   m_EditorClassIdentifier: 
-  name: Ch22Hostage
+  name: Ch01Hostage
   tag: Hostage
-  humanPrefab: {fileID: 2816307667786074423, guid: 480b353f561e4c340b7533fa3fd05bb4, type: 3}
+  humanPrefab: {fileID: 2816307667786074423, guid: b852d20518eba584f9fed77a7c8bcc75, type: 3}
