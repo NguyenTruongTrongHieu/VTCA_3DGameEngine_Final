@@ -65,6 +65,9 @@ public class PlayerItem : MonoBehaviour
 
     public void PickingUpItem(ItemParameter item)
     {
+        //Thêm âm thanh khi nhặt đồ
+        AudioManager.audioInstance.PlaySFX("PickUpItem");
+
         var playerItem = items.Find(i => i.item.id == item.id);
 
         if (playerItem != null)

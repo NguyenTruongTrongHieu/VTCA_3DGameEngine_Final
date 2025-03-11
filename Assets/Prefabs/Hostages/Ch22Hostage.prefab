@@ -234,7 +234,7 @@ MonoBehaviour:
   healingRate: 0
   timeWaitForHealing: 1
   healthSlider: {fileID: 8301501472499215608}
-  cinemachineCamera: {fileID: 0}
+  mainCamera: {fileID: 0}
   alive: 0
 --- !u!82 &3903576571532935408
 AudioSource:
@@ -258,7 +258,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 1
