@@ -1,8 +1,13 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 
-public class EnemyAudio : MonoBehaviour
+public class HumamAudio : MonoBehaviour
 {
+    [SerializeField] private bool male;
+    [SerializeField] private bool isHostage;
+    [SerializeField] private bool stopPlaySFXHostage;
     private NavMeshAgent agent;
     private AudioSource audioSource;
 
@@ -15,6 +20,23 @@ public class EnemyAudio : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
+
+        stopPlaySFXHostage = false;
+
+        if (isHostage)
+        {
+            audioSource.loop = true;
+            if (male)
+            {
+                audioSource.clip = AudioManager.audioInstance.sfxSounds.Find(x => x.name == "ScaredMale").audioClip;
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.clip = AudioManager.audioInstance.sfxSounds.Find(x => x.name == "ScaredFemale").audioClip;
+                audioSource.Play();
+            }
+        }
     }
 
     // Update is called once per frame
@@ -27,6 +49,16 @@ public class EnemyAudio : MonoBehaviour
         else
         {
             isMoving = false;
+        }
+
+        if (isHostage)
+        {
+            if (stopPlaySFXHostage)
+            {
+                return;
+            }
+
+            AddSoundThanksForHostage();
         }
     }
 
@@ -81,6 +113,22 @@ public class EnemyAudio : MonoBehaviour
             AudioManager.audioInstance.PlaySFX(soundName);
             delayTime = 0f;
         }
+    }
 
+    void AddSoundThanksForHostage()
+    {
+        bool isRescue = this.GetComponent<Hostage>().isRescue;
+        if (isRescue)
+        {
+            if (male)
+            {
+                audioSource.PlayOneShot(AudioManager.audioInstance.sfxSounds.Find(x => x.name == "ThanksMale").audioClip);
+            }
+            else
+            {
+                audioSource.PlayOneShot(AudioManager.audioInstance.sfxSounds.Find(x => x.name == "ThanksFemale").audioClip);
+            }
+            stopPlaySFXHostage = true;
+        }
     }
 }

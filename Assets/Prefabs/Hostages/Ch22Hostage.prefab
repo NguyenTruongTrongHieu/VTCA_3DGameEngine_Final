@@ -366,6 +366,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637bab9b7f863254998a1184108ca8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  male: 0
+  isHostage: 1
+  stopPlaySFXHostage: 0
 --- !u!1 &5259075777716204743
 GameObject:
   m_ObjectHideFlags: 0
