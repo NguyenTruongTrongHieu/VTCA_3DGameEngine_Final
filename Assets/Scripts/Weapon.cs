@@ -121,9 +121,8 @@ public class Weapon : MonoBehaviour
         //Bắn bằng cách sinh bullet
         var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
 
-        //Sinh ra vfx, xoay vfx theo hướng vector z của this.transform
-        var muzzleVFX = Instantiate(muzzlePrefab, muzzlePosition.transform.position,
-            Quaternion.LookRotation(new Vector3(-transform.forward.z, transform.forward.y, transform.forward.x)), transform);
+        //Chay vfx
+        muzzlePrefab.GetComponent<ParticleSystem>().Play();
         
         bullet.transform.forward = shootingDirection;
 
