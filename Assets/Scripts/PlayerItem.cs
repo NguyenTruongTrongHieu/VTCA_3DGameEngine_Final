@@ -19,6 +19,7 @@ public class PlayerItem : MonoBehaviour
     [SerializeField] private Image firstAidImage;
     [SerializeField] private TextMeshProUGUI firstAidText;
     [SerializeField] private Button pickingButton;
+    private bool canPickUpItem;
     //[SerializeField] private PlayerHealth playerHealth;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -43,10 +44,12 @@ public class PlayerItem : MonoBehaviour
 
             var item = other.gameObject.GetComponent<ItemParameter>();
 
-            pickingButton.onClick.AddListener(()=> { PickingUpItem(item); });
+            //  pickingButton.onClick.AddListener(()=> { PickingUpItem(item); });
 
+            Debug.Log(" chua f");
             if (Input.GetKeyDown(KeyCode.F))
             {
+                Debug.Log(" nut f");
                 PickingUpItem(item);
                 Destroy(other.gameObject);
                 pickingButton.gameObject.SetActive(false);
@@ -54,12 +57,15 @@ public class PlayerItem : MonoBehaviour
         }
     }
 
+
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Item"))
         {
             //Deactivate picking button
             pickingButton.gameObject.SetActive(false);
+            canPickUpItem = false;
         }
     }
 
