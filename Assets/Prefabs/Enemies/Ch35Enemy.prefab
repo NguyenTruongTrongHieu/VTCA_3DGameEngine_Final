@@ -860,6 +860,8 @@ MonoBehaviour:
   enemy: {fileID: 2940560496250780697}
   posWhenShooting: {x: 0.122, y: 1.424, z: 0.337}
   audioSource: {fileID: 0}
+  muzzlePrefab: {fileID: 1336949550903370, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+  muzzlePosition: {fileID: 2938087661990086884}
 --- !u!82 &3926329092370307976
 AudioSource:
   m_ObjectHideFlags: 0

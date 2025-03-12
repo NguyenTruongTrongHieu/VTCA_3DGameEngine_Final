@@ -64,6 +64,11 @@ public class Weapon : MonoBehaviour
     [Header("Sound effect")]
     [SerializeField] private AudioSource audioSource;
 
+    [Header("Muzzle")]
+    // --- Muzzle ---
+    [SerializeField] private GameObject muzzlePrefab;
+    [SerializeField] private GameObject muzzlePosition;
+
     private void Awake()
     {
         readyToShoot = true;
@@ -115,7 +120,11 @@ public class Weapon : MonoBehaviour
 
         //Bắn bằng cách sinh bullet
         var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
-        gunsVFX.FireWeapon();
+
+        //Sinh ra vfx, xoay vfx theo hướng vector z của this.transform
+        var muzzleVFX = Instantiate(muzzlePrefab, muzzlePosition.transform.position,
+            Quaternion.LookRotation(new Vector3(-transform.forward.z, transform.forward.y, transform.forward.x)), transform);
+        
         bullet.transform.forward = shootingDirection;
 
         //Dòng ghi chú phía dưới là cách làm viên đạn di chuyển ở script này đã được đưa qua script Bullet.cs
