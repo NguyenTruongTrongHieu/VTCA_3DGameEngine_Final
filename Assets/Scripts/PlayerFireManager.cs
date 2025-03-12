@@ -1,10 +1,10 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class PlayerFireManager : MonoBehaviour
 {
     [Header("Shooting")]
     [SerializeField] private Camera playerCamera;
@@ -19,12 +19,13 @@ public class Weapon : MonoBehaviour
     //Spread
     [SerializeField] private float spreadIntensity;//Độ giật, độ nhiễu của súng
 
-    //VFX
-    GunsVFX gunsVFX = new GunsVFX();
-
     //Cái đống ở trên để set up cho từng loại súng như súng trường, súng lục,... đổi súng cần đổi theo (trừ cái camera với đống bool).
     //Muốn đổi tốc độ đạn => qua viên đạn mà đổi
 
+    [Header("Muzzle")]
+    // --- Muzzle ---
+    public GameObject muzzlePrefab;
+    public GameObject muzzlePosition;
 
     public enum ShootingMode
     {
@@ -55,12 +56,6 @@ public class Weapon : MonoBehaviour
     //[SerializeField] private GameObject enemyPrefab;
     //[SerializeField] private float range = 100f;
 
-    [Header("Enemy or player")]
-    [SerializeField] private bool isPlayer;
-    [SerializeField] private EnemyAI enemy;
-    [SerializeField] private Vector3 posWhenShooting;
-    private Vector3 startPosition;
-
     [Header("Sound effect")]
     [SerializeField] private AudioSource audioSource;
 
@@ -75,25 +70,19 @@ public class Weapon : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        startPosition = transform.localPosition;
         //isPlayer = gameObject.tag == "Player" ? true : false;
-
-        if (!isPlayer)//Danh cho enemy
-        {
-            StartCoroutine(AutoShootForEnemy(2f));
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
         //Dành cho player
-        if (currentShootingMode == ShootingMode.Auto && isPlayer)
+        if (currentShootingMode == ShootingMode.Auto)
         {
             //holding down left mouse button
             isShooting = Input.GetKey(KeyCode.Mouse0);
         }
-        else if ((currentShootingMode == ShootingMode.Single || currentShootingMode == ShootingMode.Burst) && isPlayer)
+        else if ((currentShootingMode == ShootingMode.Single || currentShootingMode == ShootingMode.Burst))
         {
             //clicking left mouse button once
             isShooting = Input.GetKeyDown(KeyCode.Mouse0);
@@ -115,7 +104,8 @@ public class Weapon : MonoBehaviour
 
         //Bắn bằng cách sinh bullet
         var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
-        gunsVFX.FireWeapon();
+        var muzzleVFX = Instantiate(muzzlePrefab, muzzlePosition.transform.position, new Quaternion(transform.rotation.x, transform.rotation.y +90f, transform.rotation.z, 0));
+        Destroy(muzzleVFX, 10f);
         bullet.transform.forward = shootingDirection;
 
         //Dòng ghi chú phía dưới là cách làm viên đạn di chuyển ở script này đã được đưa qua script Bullet.cs
@@ -203,26 +193,6 @@ public class Weapon : MonoBehaviour
         {
             AudioClip clip = AudioManager.audioInstance.sfxSounds.Find(x => x.name == "PistolSingleGun").audioClip;
             audioSource.PlayOneShot(clip);
-        }
-    }
-
-    IEnumerator AutoShootForEnemy(float waitingTime)
-    {
-        while (true)
-        {
-            if (enemy.isAttacking)
-            {
-                FireWeapon();
-                transform.localPosition = posWhenShooting;
-
-                yield return new WaitForSeconds(waitingTime);
-                burstBulletLeft = bulletsPerBurst;
-            }
-            else
-            {
-                transform.localPosition = startPosition;
-            }
-            yield return null;
         }
     }
 }
