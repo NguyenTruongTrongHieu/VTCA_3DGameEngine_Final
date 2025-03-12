@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -17,6 +18,7 @@ public class PlayerQuest : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI hostageRescuedText;
     [SerializeField] private TextMeshProUGUI enemyKilledText;
+    [SerializeField] private TextMeshProUGUI alertText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -69,6 +71,14 @@ public class PlayerQuest : MonoBehaviour
     {
         foreach (var hostage in hostages)
         {
+            if (hostage == null)
+            {
+                hostageKilled++;
+                StartCoroutine(HandleAlert());
+                hostages.Remove(hostage);
+                continue;
+            }
+
             if (hostage.GetComponent<Hostage>().isRescue)
             {
                 hostageRescued++;
@@ -81,5 +91,26 @@ public class PlayerQuest : MonoBehaviour
     {
         hostageRescuedText.text = $"Hostages saved: {hostageRescued}/{totalHostages}";
         enemyKilledText.text = $"Enemy killed: {enemyKilled}";
+    }
+
+    IEnumerator HandleAlert()
+    {
+        if (!alertText.gameObject.activeSelf)
+        {
+            alertText.text = $"{hostageKilled} hostages have been killed";
+
+            alertText.gameObject.SetActive(true);
+            alertText.transform.localPosition = Vector3.zero;
+
+            while (alertText.transform.localPosition.y < 280f)
+            {
+                alertText.transform.localPosition += new Vector3(0, Time.deltaTime * 800, 0);
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(2f);
+            alertText.gameObject.SetActive(false);
+        }
+        yield return null;
     }
 }

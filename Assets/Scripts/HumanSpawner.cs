@@ -22,6 +22,11 @@ public class HumanSpawner : MonoBehaviour
         SpawnEnemies();
     }
 
+    private void Start()
+    {
+        AudioManager.audioInstance.PlayMusic("Game");
+    }
+
     void AddEnemyPositions()
     {
         foreach (var enemyPosition in GameObject.FindGameObjectsWithTag("EnemyPosition"))

@@ -1774,6 +1774,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 174963595}
     - target: {fileID: 3491769380745944899, guid: 7ca9d338f070f3f449beb9d53b1f8a91, type: 3}
+      propertyPath: alertText
+      value: 
+      objectReference: {fileID: 1989289322}
+    - target: {fileID: 3491769380745944899, guid: 7ca9d338f070f3f449beb9d53b1f8a91, type: 3}
       propertyPath: enemyKilledText
       value: 
       objectReference: {fileID: 1989289320}
@@ -38067,7 +38071,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.033333335
+  m_VoxelSize: 0.083333336
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 44408ccd2795f074c91801d94758d65b, type: 2}
   m_BuildHeightMesh: 0
@@ -45974,6 +45978,17 @@ MonoBehaviour:
 --- !u!114 &1989289321 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 384226281187234450, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+  m_PrefabInstance: {fileID: 1989289319}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1989289322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 826819572247594500, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
   m_PrefabInstance: {fileID: 1989289319}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
