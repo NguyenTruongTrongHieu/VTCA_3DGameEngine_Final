@@ -19,9 +19,6 @@ public class Weapon : MonoBehaviour
     //Spread
     [SerializeField] private float spreadIntensity;//Độ giật, độ nhiễu của súng
 
-    //VFX
-    GunsVFX gunsVFX = new GunsVFX();
-
     //Cái đống ở trên để set up cho từng loại súng như súng trường, súng lục,... đổi súng cần đổi theo (trừ cái camera với đống bool).
     //Muốn đổi tốc độ đạn => qua viên đạn mà đổi
 
