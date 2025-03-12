@@ -38,21 +38,6 @@ public class PlayerAudio : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Street") && isMoving)
-        {
-            Debug.Log("street");
-            AudioManager.audioInstance.PlaySFX("FootstepInStreet");
-        }
-
-        if (collision.gameObject.CompareTag("Floor") && isMoving)
-        {
-            Debug.Log("floor");
-            AudioManager.audioInstance.PlaySFX("FootstepInFloor");
-        }
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Street") && isMoving)
