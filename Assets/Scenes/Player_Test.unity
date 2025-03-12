@@ -1487,12 +1487,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e98271e1c60ef549b3240179519b7bf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 512262759}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e98271e1c60ef549b3240179519b7bf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 512262761}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e98271e1c60ef549b3240179519b7bf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 512262762}
   m_SourcePrefab: {fileID: 100100000, guid: 4e98271e1c60ef549b3240179519b7bf, type: 3}
 --- !u!4 &512262756 stripped
 Transform:
@@ -1652,46 +1646,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &512262761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512262757}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52fb75dc2692bec45a51e328287fb7dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muzzlePrefab: {fileID: 1336949550903370, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
-  muzzlePosition: {fileID: 1389853387}
---- !u!114 &512262762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512262757}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b942c96111768346b18dfc466bca273, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
-  isShooting: 0
-  readyToShoot: 0
-  shootingDelay: 0.15
-  bulletsPerBurst: 3
-  burstBulletLeft: 0
-  spreadIntensity: 0
-  muzzlePrefab: {fileID: 1336949550903370, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
-  muzzlePosition: {fileID: 1389853387}
-  currentShootingMode: 0
-  currentWeaponType: 1
-  bulletPrefab: {fileID: 8540748198045017097, guid: 71b6774505a088a4d920abb3ce57437e, type: 3}
-  bulletSpawnPoint: {fileID: 1389853388}
-  audioSource: {fileID: 0}
 --- !u!1 &516541010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2670,12 +2624,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7489893567846038471, guid: c7ec0e3c8dc442643b5f8785c5f4f187, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1659615870}
-    - targetCorrespondingSourceObject: {fileID: 7489893567846038471, guid: c7ec0e3c8dc442643b5f8785c5f4f187, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1659615871}
-    - targetCorrespondingSourceObject: {fileID: 7489893567846038471, guid: c7ec0e3c8dc442643b5f8785c5f4f187, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1659615872}
   m_SourcePrefab: {fileID: 100100000, guid: c7ec0e3c8dc442643b5f8785c5f4f187, type: 3}
 --- !u!1 &1451951308
 GameObject:
@@ -3005,46 +2953,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1659615871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659615866}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52fb75dc2692bec45a51e328287fb7dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muzzlePrefab: {fileID: 1336949550903370, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
-  muzzlePosition: {fileID: 567362624}
---- !u!114 &1659615872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659615866}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b942c96111768346b18dfc466bca273, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 330585545}
-  isShooting: 0
-  readyToShoot: 0
-  shootingDelay: 0.15
-  bulletsPerBurst: 3
-  burstBulletLeft: 0
-  spreadIntensity: 0
-  muzzlePrefab: {fileID: 1336949550903370, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
-  muzzlePosition: {fileID: 567362624}
-  currentShootingMode: 2
-  currentWeaponType: 0
-  bulletPrefab: {fileID: 8540748198045017097, guid: 71b6774505a088a4d920abb3ce57437e, type: 3}
-  bulletSpawnPoint: {fileID: 567362625}
-  audioSource: {fileID: 0}
 --- !u!1 &1887081834
 GameObject:
   m_ObjectHideFlags: 0
