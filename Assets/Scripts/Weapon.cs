@@ -22,15 +22,16 @@ public class Weapon : MonoBehaviour
     //Cái đống ở trên để set up cho từng loại súng như súng trường, súng lục,... đổi súng cần đổi theo (trừ cái camera với đống bool).
     //Muốn đổi tốc độ đạn => qua viên đạn mà đổi
 
+
     public enum ShootingMode
-    { 
+    {
         Single,
         Burst,
         Auto
     }
 
     public enum WeaponType
-    { 
+    {
         Machine,
         Pistol
     }
@@ -60,6 +61,11 @@ public class Weapon : MonoBehaviour
     [Header("Sound effect")]
     [SerializeField] private AudioSource audioSource;
 
+    [Header("Muzzle")]
+    // --- Muzzle ---
+    [SerializeField] private GameObject muzzlePrefab;
+    [SerializeField] private GameObject muzzlePosition;
+
     private void Awake()
     {
         readyToShoot = true;
@@ -75,7 +81,7 @@ public class Weapon : MonoBehaviour
         //isPlayer = gameObject.tag == "Player" ? true : false;
 
         if (!isPlayer)//Danh cho enemy
-        { 
+        {
             StartCoroutine(AutoShootForEnemy(2f));
         }
     }
@@ -84,7 +90,7 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         //Dành cho player
-        if (currentShootingMode == ShootingMode.Auto &&  isPlayer)
+        if (currentShootingMode == ShootingMode.Auto && isPlayer)
         {
             //holding down left mouse button
             isShooting = Input.GetKey(KeyCode.Mouse0);
@@ -111,6 +117,10 @@ public class Weapon : MonoBehaviour
 
         //Bắn bằng cách sinh bullet
         var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
+
+        //Chay vfx
+        muzzlePrefab.GetComponent<ParticleSystem>().Play();
+        
         bullet.transform.forward = shootingDirection;
 
         //Dòng ghi chú phía dưới là cách làm viên đạn di chuyển ở script này đã được đưa qua script Bullet.cs
@@ -142,6 +152,7 @@ public class Weapon : MonoBehaviour
         }
 
         AddSound();
+        ;
     }
 
     private void ResetShot()
@@ -183,7 +194,7 @@ public class Weapon : MonoBehaviour
         float y = UnityEngine.Random.Range(-spreadIntensity, spreadIntensity);
 
         //returning the shooting direction and spread
-        return direction + new Vector3(x,y,0);
+        return direction + new Vector3(x, y, 0);
     }
 
     void AddSound()
@@ -213,7 +224,7 @@ public class Weapon : MonoBehaviour
                 burstBulletLeft = bulletsPerBurst;
             }
             else
-            { 
+            {
                 transform.localPosition = startPosition;
             }
             yield return null;

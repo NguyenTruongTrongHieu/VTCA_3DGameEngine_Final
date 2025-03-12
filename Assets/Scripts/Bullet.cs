@@ -7,6 +7,9 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float bulletSpeed = 200f;
     [SerializeField] private float bulletLifeTime = 3f;
 
+    [SerializeField] private GameObject bloodEffect;
+    [SerializeField] private GameObject explosionEffect;
+
     private void Start()
     {
         BulletMovement();
@@ -28,7 +31,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Target"))
-        { 
+        {
             Debug.Log("Exactly");
         }
 
@@ -43,7 +46,7 @@ public class Bullet : MonoBehaviour
             EnemyHealth enemy = collision.gameObject.GetComponent<EnemyHealth>();
             enemy.TakeDamage(20);
             if (enemy.currentHealth <= 0)
-            { 
+            {
                 enemy.Die();
             }
         }
@@ -75,6 +78,18 @@ public class Bullet : MonoBehaviour
             {
                 hostage.Die();
             }
+        }
+
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Hostage") ||
+            collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("HeadEnemy"))
+        {
+            Instantiate(bloodEffect, transform.position, bloodEffect.transform.rotation);
+            Debug.Log("Blood");
+        }
+        else
+        {
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            Debug.Log("Explosion");
         }
 
         Destroy(gameObject);
