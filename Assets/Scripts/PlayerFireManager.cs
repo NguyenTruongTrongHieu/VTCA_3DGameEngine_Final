@@ -104,8 +104,9 @@ public class PlayerFireManager : MonoBehaviour
 
         //Bắn bằng cách sinh bullet
         var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
-        var muzzleVFX = Instantiate(muzzlePrefab, muzzlePosition.transform.position, new Quaternion(transform.rotation.x, transform.rotation.y +90f, transform.rotation.z, 0));
-        Destroy(muzzleVFX, 10f);
+        var muzzleVFX = Instantiate(muzzlePrefab, muzzlePosition.transform.position, 
+            Quaternion.LookRotation(new Vector3(-transform.forward.z, transform.forward.y, transform.forward.x)), transform);
+        //Destroy(muzzleVFX, 100f);
         bullet.transform.forward = shootingDirection;
 
         //Dòng ghi chú phía dưới là cách làm viên đạn di chuyển ở script này đã được đưa qua script Bullet.cs
