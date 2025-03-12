@@ -76,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
                 isJumping = true;
                 // Tính vận tốc nhảy
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                Debug.Log("Jump");
             }
         }
 
