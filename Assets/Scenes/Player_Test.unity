@@ -2158,6 +2158,7 @@ GameObject:
   - component: {fileID: 1207960692}
   - component: {fileID: 1207960693}
   - component: {fileID: 1207960694}
+  - component: {fileID: 1207960695}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2362,6 +2363,25 @@ MonoBehaviour:
   rescueDistance: 2
   rescueButton: {fileID: 0}
   hostages: []
+--- !u!114 &1207960695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207960683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3e229e3812e9a43ab66d8566a372ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hostages: []
+  enemies: []
+  hostageRescued: 0
+  enemyKilled: 0
+  hostageKilled: 0
+  hostageRescuedText: {fileID: 5253977649811950850}
+  enemyKilledText: {fileID: 5253977649811950849}
 --- !u!1001 &1209479402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3486,6 +3506,38 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 8418913509589547574, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8418913509589547574, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8418913509589547574, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8418913509589547574, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481522050975413466, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481522050975413466, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481522050975413466, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481522050975413466, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8676669934166288877, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
       propertyPath: m_Name
       value: GameCanvas
@@ -3495,6 +3547,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+--- !u!114 &5253977649811950849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3729293402268061905, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+  m_PrefabInstance: {fileID: 5253977649811950848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5253977649811950850 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 384226281187234450, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+  m_PrefabInstance: {fileID: 5253977649811950848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
