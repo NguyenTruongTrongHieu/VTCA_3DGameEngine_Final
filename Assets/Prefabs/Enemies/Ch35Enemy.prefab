@@ -523,6 +523,9 @@ GameObject:
   - component: {fileID: 2728671272702397611}
   - component: {fileID: 2940560496250780697}
   - component: {fileID: 5877771108350447089}
+  - component: {fileID: 692721779811880731}
+  - component: {fileID: 7233433093437128976}
+  - component: {fileID: 2406484985089656266}
   m_Layer: 0
   m_Name: Ch35Enemy
   m_TagString: Enemy
@@ -608,12 +611,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf868debaab7344b87caec2ee4b8cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseDistance: 50
-  targetDistance: 50
-  attackRange: 50
-  returnRange: 30
-  wanderRange: 5
-  stoppingDistanceWithPlayer: 50
+  chaseDistance: 20
+  targetDistance: 20
+  attackRange: 20
+  returnRange: 20
+  wanderRange: 2
+  stoppingDistanceWithPlayer: 20
   visionRaycastRange: 100
   isTargetToPlayer: 0
   chasingToPlayerWhenSaw: 0
@@ -636,10 +639,143 @@ MonoBehaviour:
   healingRate: 0
   timeWaitForHealing: 1
   healthSlider: {fileID: 7397149092423644526}
-  cinemachineCamera: {fileID: 0}
+  mainCamera: {fileID: 0}
   dropItems:
   - {fileID: 11400000, guid: 20848a44fcdbcc746a7d8332f426ebf8, type: 2}
   alive: 0
+--- !u!114 &692721779811880731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6499737797719046564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637bab9b7f863254998a1184108ca8c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  male: 1
+  isHostage: 0
+  stopPlaySFXHostage: 0
+--- !u!65 &7233433093437128976
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6499737797719046564}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &2406484985089656266
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6499737797719046564}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 20
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 1
+  BypassListenerEffects: 1
+  BypassReverbZones: 1
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6852248597976859799
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,7 +882,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 1

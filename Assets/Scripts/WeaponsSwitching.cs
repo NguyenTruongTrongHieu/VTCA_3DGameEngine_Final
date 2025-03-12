@@ -12,7 +12,6 @@ public class WeaponInfo
 public class WeaponsSwitching : MonoBehaviour
 {
     //animation
-     public Animator gunsAnim;
 
     //Weapons
     [SerializeField] private GameObject pistolPrefab;//Prefab của súng
@@ -22,9 +21,6 @@ public class WeaponsSwitching : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gunsAnim = GetComponentInChildren<Animator>();
-        gunsAnim.SetInteger("WeaponType", 0);
-
         //Set up weapon
         weapons.Add(new WeaponInfo { weaponPrefab = pistolPrefab });
         weapons.Add(new WeaponInfo { weaponPrefab = PrimaryGunPrefab });
@@ -36,21 +32,15 @@ public class WeaponsSwitching : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        gunsAnim = GetComponentInChildren<Animator>();
-        
+    {    
         //Đổi súng
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            gunsAnim.SetInteger("WeaponType", 1);
-            gunsAnim.SetTrigger("DrawWeapons");
             ActiveWeapons(0);
             //gunsAnim = weapons[0].weaponPrefab.GetComponent<Animator>();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            gunsAnim.SetInteger("WeaponType", 0);
-            gunsAnim.SetTrigger("DrawWeapons");
             ActiveWeapons(1);
             //gunsAnim = weapons[1].weaponPrefab.GetComponent<Animator>();
         }
