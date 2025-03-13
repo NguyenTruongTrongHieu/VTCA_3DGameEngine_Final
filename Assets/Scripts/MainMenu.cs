@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         AudioManager.audioInstance.PlayMusic("Menu");
+        GameState.gameStateInstance.currentGameState = GameState.State.playing;
     }
 
     // Update is called once per frame
