@@ -83,13 +83,13 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Hostage") ||
             collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("HeadEnemy"))
         {
-            Instantiate(bloodEffect, transform.position, bloodEffect.transform.rotation);
-            Debug.Log("Blood");
+            var effect = Instantiate(bloodEffect, transform.position, bloodEffect.transform.rotation);
+            Destroy(effect, 0.2f);
         }
         else
         {
-            Instantiate(explosionEffect, transform.position, Quaternion.identity);
-            Debug.Log("Explosion");
+            var effect = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 0.2f);
         }
 
         Destroy(gameObject);

@@ -42,6 +42,11 @@ public class HumamAudio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameState.gameStateInstance.currentGameState != GameState.State.playing)
+        {
+            return;
+        }
+
         if (agent.velocity.magnitude > 0f)
         {
             isMoving = true;

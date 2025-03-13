@@ -68,6 +68,11 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameState.gameStateInstance.currentGameState != GameState.State.playing)
+        {
+            return;
+        }
+
         var isAlive = GetComponent<EnemyHealth>().alive;
         if (!isAlive)
         {
@@ -115,7 +120,7 @@ public class EnemyAI : MonoBehaviour
     {
         Vector3 direction = player.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = rotation;
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2f * Time.deltaTime);
 
         //transform.LookAt(player);
     }

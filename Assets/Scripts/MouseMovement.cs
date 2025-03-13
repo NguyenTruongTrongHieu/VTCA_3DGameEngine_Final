@@ -21,6 +21,11 @@ public class MouseMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameState.gameStateInstance.currentGameState != GameState.State.playing)
+        {
+            return;
+        }
+
         // Ensure the cursor is locked
         if (Cursor.lockState != CursorLockMode.Locked)
         {

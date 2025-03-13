@@ -39,6 +39,11 @@ public class Hostage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameState.gameStateInstance.currentGameState != GameState.State.playing)
+        {
+            return;
+        }
+
         var isAlive = GetComponent<HostageHealth>().alive;
         if (!isAlive)
         {

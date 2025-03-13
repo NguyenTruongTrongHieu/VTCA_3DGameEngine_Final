@@ -18,6 +18,11 @@ public class PlayerAudio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameState.gameStateInstance.currentGameState != GameState.State.playing)
+        {
+            return;
+        }
+
         if (characterController.velocity.magnitude > 0f)
         {
             if (Input.GetKey(KeyCode.LeftShift))
