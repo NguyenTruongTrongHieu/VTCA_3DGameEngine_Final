@@ -68,6 +68,11 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameState.gameStateInstance.currentGameState != GameState.State.playing)
+        {
+            return;
+        }
+
         var isAlive = GetComponent<EnemyHealth>().alive;
         if (!isAlive)
         {

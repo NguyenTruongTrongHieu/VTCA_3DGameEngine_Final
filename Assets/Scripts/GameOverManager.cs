@@ -52,6 +52,7 @@ public class GameOverManager : MonoBehaviour
         titleText.text = "You Win";
         replay.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
+        GameState.gameStateInstance.currentGameState = GameState.State.over;
     }
 
     public void Lose()
@@ -60,6 +61,7 @@ public class GameOverManager : MonoBehaviour
         titleText.text = "You Lose";
         replay.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        GameState.gameStateInstance.currentGameState = GameState.State.over;
     }
 
     public void ReturnMenu()

@@ -32,11 +32,15 @@ public class PlayerQuest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameState.gameStateInstance.currentGameState != GameState.State.playing)
+        {
+            return;
+        }
+
         SetUpEnemyKilled();
         SetUpHostageRescued();
 
         SetUpQuestText();
-
     }
 
     void AddEnemies()

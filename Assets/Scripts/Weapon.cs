@@ -89,7 +89,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameOverManager.overInstance.isOver)
+        if (GameState.gameStateInstance.currentGameState != GameState.State.playing)
         {
             return;
         }
@@ -218,7 +218,7 @@ public class Weapon : MonoBehaviour
 
     IEnumerator AutoShootForEnemy(float waitingTime)
     {
-        while (true)
+        while (GameState.gameStateInstance.currentGameState == GameState.State.playing)
         {
             if (enemy.isAttacking)
             {

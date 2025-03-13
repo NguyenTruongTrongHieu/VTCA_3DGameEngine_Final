@@ -19,6 +19,11 @@ public class PlayerRescue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameState.gameStateInstance.currentGameState != GameState.State.playing)
+        {
+            return;
+        }
+
         GameObject.FindGameObjectsWithTag("Hostage", hostages);
         foreach (GameObject hostage in hostages) 
         {
