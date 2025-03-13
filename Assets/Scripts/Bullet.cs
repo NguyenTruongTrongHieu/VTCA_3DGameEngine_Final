@@ -38,6 +38,12 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player hit");
+                PlayerStats Player = collision.gameObject.GetComponent<PlayerStats>();
+                Player.TakeDamage(20);
+                if (Player.currentHealth <= 0)
+                {
+                     Player.Die();
+                }
         }
 
         if (collision.gameObject.CompareTag("Enemy"))

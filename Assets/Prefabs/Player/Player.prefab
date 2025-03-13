@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7529965251763328906}
   - component: {fileID: 8556650537425078595}
   - component: {fileID: 3491769380745944899}
+  - component: {fileID: 1864174943640935034}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -244,6 +245,21 @@ MonoBehaviour:
   hostageRescuedText: {fileID: 0}
   enemyKilledText: {fileID: 0}
   alertText: {fileID: 0}
+--- !u!114 &1864174943640935034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218433783307035433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7fb892987fb92498aa527af4f63fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 100
+  healthBar: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
 --- !u!1 &1344104082402549811
 GameObject:
   m_ObjectHideFlags: 0
