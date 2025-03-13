@@ -66,11 +66,20 @@ public class GameOverManager : MonoBehaviour
 
     public void ReturnMenu()
     {
+        SetSfxButton();
         SceneManager.LoadScene(0);
     }
 
     public void Replay()
     {
+        SetSfxButton();
+
+        GameState.gameStateInstance.currentGameState = GameState.State.playing;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void SetSfxButton()
+    {
+        AudioManager.audioInstance.PlaySFX("ButtonClick");
     }
 }
