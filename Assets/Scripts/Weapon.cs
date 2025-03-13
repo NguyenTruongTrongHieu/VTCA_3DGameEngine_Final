@@ -89,6 +89,11 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameOverManager.overInstance.isOver)
+        {
+            return;
+        }
+
         //Dành cho player
         if (currentShootingMode == ShootingMode.Auto && isPlayer)
         {

@@ -115,7 +115,7 @@ public class EnemyAI : MonoBehaviour
     {
         Vector3 direction = player.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = rotation;
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2f * Time.deltaTime);
 
         //transform.LookAt(player);
     }

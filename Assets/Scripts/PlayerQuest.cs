@@ -74,7 +74,16 @@ public class PlayerQuest : MonoBehaviour
             if (hostage == null)
             {
                 hostageKilled++;
-                StartCoroutine(HandleAlert());
+
+                //if 3 hostages have been killed => lose
+                if (hostageKilled >= 3)
+                {
+                    GameOverManager.overInstance.UpdateInfo(hostageRescued, enemyKilled, hostageKilled);
+                    GameOverManager.overInstance.Lose();
+                    GameOverManager.overInstance.gameOverPanel.SetActive(true);
+                }
+
+                StartCoroutine(SetUpHostagesKilled());
                 hostages.Remove(hostage);
                 continue;
             }
@@ -82,6 +91,15 @@ public class PlayerQuest : MonoBehaviour
             if (hostage.GetComponent<Hostage>().isRescue)
             {
                 hostageRescued++;
+
+                //if all hostages have been rescued => win
+                if (hostageKilled >= 3)
+                {
+                    GameOverManager.overInstance.UpdateInfo(hostageRescued, enemyKilled, hostageKilled);
+                    GameOverManager.overInstance.Win();
+                    GameOverManager.overInstance.gameOverPanel.SetActive(true);
+                }
+
                 hostages.Remove(hostage);
             }
         }
@@ -89,11 +107,11 @@ public class PlayerQuest : MonoBehaviour
 
     void SetUpQuestText()
     {
-        hostageRescuedText.text = $"Hostages saved: {hostageRescued}/{totalHostages}";
+        hostageRescuedText.text = $"Hostages saved: {hostageRescued}:{totalHostages}";
         enemyKilledText.text = $"Enemy killed: {enemyKilled}";
     }
 
-    IEnumerator HandleAlert()
+    IEnumerator SetUpHostagesKilled()
     {
         if (!alertText.gameObject.activeSelf)
         {
