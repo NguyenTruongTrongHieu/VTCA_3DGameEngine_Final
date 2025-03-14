@@ -169,7 +169,7 @@ public class Weapon : MonoBehaviour
                 }
             }
 
-            ammoText.text = currentAmmo + " / " + ammoClip;
+            ammoText.text = currentAmmo + " : " + ammoClip;
         }
     }
 
