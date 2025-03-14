@@ -2,13 +2,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+public class ItemInfoSaveLoad
+{
+    public int itemID;
+    public int quantity;
+
+    public ItemInfoSaveLoad(int itemID, int quantity)
+    {
+        this.itemID = itemID;
+        this.quantity = quantity;
+    }
+}
+
 public class SaveLoadInfo 
 {
     //game states
     public string state;
 
     //item
-    public List<int> itemsID = new List<int>();
+    public List<ItemInfoSaveLoad> items = new List<ItemInfoSaveLoad>();
 
     //Health
     public int currentHealth;
@@ -26,10 +38,10 @@ public class SaveLoadInfo
         
     }
 
-    public SaveLoadInfo(string state, List<int> items, int currentHealth, float[] playerPosition, int hostageRescued, int enemyKilled, int hostageKilled)
+    public SaveLoadInfo(string state, List<ItemInfoSaveLoad> items, int currentHealth, float[] playerPosition, int hostageRescued, int enemyKilled, int hostageKilled)
     {
         this.state = state;
-        this.itemsID = items;
+        this.items = items;
         this.currentHealth = currentHealth;
         this.playerPosition = playerPosition;
         this.hostageRescued = hostageRescued;
