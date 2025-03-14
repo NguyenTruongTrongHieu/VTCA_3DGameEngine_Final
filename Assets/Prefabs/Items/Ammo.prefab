@@ -68,11 +68,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e803dcb7e34a02d4f8b6c20f1f1e2477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  name: Ammo
   id: 0
   healing: 0
   ammo: 20
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: b64262e455b2caa4ab7f4ee8bb5b7464, type: 3}
 --- !u!1001 &3110005590633367533
 PrefabInstance:
   m_ObjectHideFlags: 0

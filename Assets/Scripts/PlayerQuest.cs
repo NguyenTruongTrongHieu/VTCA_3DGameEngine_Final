@@ -5,16 +5,17 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class PlayerQuest : MonoBehaviour
 {
     [SerializeField] private List<GameObject> hostages = new List<GameObject>();
     [SerializeField] private List<GameObject> enemies = new List<GameObject>();
 
-    [SerializeField] private int totalHostages;
-    [SerializeField] private int hostageRescued;
-    [SerializeField] private int enemyKilled;
-    [SerializeField] private int hostageKilled;
+    public int totalHostages;
+    public int hostageRescued;
+    public int enemyKilled;
+    public int hostageKilled;
 
     [SerializeField] private TextMeshProUGUI hostageRescuedText;
     [SerializeField] private TextMeshProUGUI enemyKilledText;
@@ -25,8 +26,6 @@ public class PlayerQuest : MonoBehaviour
     {
         AddEnemies();
         AddHostages();
-
-        totalHostages = hostages.Count;
     }
 
     // Update is called once per frame
@@ -97,7 +96,7 @@ public class PlayerQuest : MonoBehaviour
                 hostageRescued++;
 
                 //if all hostages have been rescued => win
-                if (hostageKilled >= 3)
+                if (hostageRescued >= totalHostages)
                 {
                     GameOverManager.overInstance.UpdateInfo(hostageRescued, enemyKilled, hostageKilled);
                     GameOverManager.overInstance.Win();
