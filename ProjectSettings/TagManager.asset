@@ -19,6 +19,7 @@ TagManager:
   - AmmoText
   - AK
   - Pistol
+  - GunIcon
   layers:
   - Default
   - TransparentFX
