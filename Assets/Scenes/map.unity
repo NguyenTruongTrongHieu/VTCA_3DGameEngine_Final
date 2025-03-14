@@ -1806,6 +1806,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1864174943640935034, guid: 7ca9d338f070f3f449beb9d53b1f8a91, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1989289324}
     - target: {fileID: 3228292595179291446, guid: 7ca9d338f070f3f449beb9d53b1f8a91, type: 3}
       propertyPath: firstAidText
       value: 
@@ -47110,6 +47114,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1989289324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9158762442688138183, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+  m_PrefabInstance: {fileID: 1989289319}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be3019cd9cd183945aa72b705fbe4a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1993581284
