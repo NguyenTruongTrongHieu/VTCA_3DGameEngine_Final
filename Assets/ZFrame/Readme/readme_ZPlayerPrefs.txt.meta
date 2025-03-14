@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2a700f213d43d8547b13827f22fd56b0
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 32357
+  packageName: Secured PlayerPrefs
+  packageVersion: 1.1
+  assetPath: Assets/ZFrame/Readme/readme_ZPlayerPrefs.txt
+  uploadId: 61592

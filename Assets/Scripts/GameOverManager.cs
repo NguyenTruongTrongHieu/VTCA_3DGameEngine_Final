@@ -48,6 +48,9 @@ public class GameOverManager : MonoBehaviour
 
     public void Win()
     {
+        //Save game
+        SaveLoadSystem.saveLoadInstance.SaveData("Win");
+
         isOver = true;
         titleText.text = "You Win";
         replay.gameObject.SetActive(false);
@@ -57,6 +60,9 @@ public class GameOverManager : MonoBehaviour
 
     public void Lose()
     {
+        //Save game
+        SaveLoadSystem.saveLoadInstance.SaveData("Lose");
+
         isOver = true;
         titleText.text = "You Lose";
         replay.gameObject.SetActive(true);

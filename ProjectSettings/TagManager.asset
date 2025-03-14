@@ -57,6 +57,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: UIMap
+    uniqueID: 3463046963
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1

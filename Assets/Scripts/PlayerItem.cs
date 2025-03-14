@@ -12,7 +12,7 @@ public class ItemInventory
 
 public class PlayerItem : MonoBehaviour
 {
-    [SerializeField] private List<ItemInventory> items = new List<ItemInventory>();
+    public List<ItemInventory> items = new List<ItemInventory>();
     [SerializeField] private Weapon playerWeapon;
 
     [SerializeField] private GameObject firstAidPanel;
@@ -27,6 +27,11 @@ public class PlayerItem : MonoBehaviour
     {
         firstAidPanel.SetActive(false);
         pickingButton.gameObject.SetActive(false);
+
+        if (items == null)
+        {
+            Debug.Log("null");
+        }
     }
 
     // Update is called once per frame
@@ -46,10 +51,11 @@ public class PlayerItem : MonoBehaviour
 
             //  pickingButton.onClick.AddListener(()=> { PickingUpItem(item); });
 
-            Debug.Log(" chua f");
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Debug.Log(" nut f");
+                //Thêm âm thanh khi nhặt đồ
+                AudioManager.audioInstance.PlaySFX("PickUpItem");
+
                 PickingUpItem(item);
                 Destroy(other.gameObject);
                 pickingButton.gameObject.SetActive(false);
@@ -71,9 +77,6 @@ public class PlayerItem : MonoBehaviour
 
     public void PickingUpItem(ItemParameter item)
     {
-        //Thêm âm thanh khi nhặt đồ
-        AudioManager.audioInstance.PlaySFX("PickUpItem");
-
         var playerItem = items.Find(i => i.item.id == item.id);
 
         if (playerItem != null)
@@ -114,6 +117,7 @@ public class PlayerItem : MonoBehaviour
             //Use item
             if (inventory.quantity <= 0)//Nếu số lượng = 0 thì không dùng được
             {
+                //Có thể xoá item đi khi đã dùng hết
                 return;
             }
             inventory.quantity = Mathf.Max(0, inventory.quantity--);
@@ -122,9 +126,9 @@ public class PlayerItem : MonoBehaviour
 
     void ShowInventory()
     {
-        foreach (var item in items) {
-            Debug.Log($"{item.item.name}; {item.quantity}\n");
-        }
+        //foreach (var item in items) {
+        //    Debug.Log($"{item.item.name}; {item.quantity}\n");
+        //}
 
         //Show first aid
         if (!firstAidPanel.activeSelf)
