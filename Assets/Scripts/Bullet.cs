@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("Player hit");
                 PlayerStats Player = collision.gameObject.GetComponent<PlayerStats>();
-                Player.TakeDamage(20);
+                Player.TakeDamage(10);
                 if (Player.currentHealth <= 0)
                 {
                      Player.Die();
