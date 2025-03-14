@@ -1768,6 +1768,90 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: fill
+      value: 
+      objectReference: {fileID: 5225031554772349856}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.ctime0
+      value: 16384
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.ctime1
+      value: 39321
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.ctime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.ctime3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.key0.b
+      value: 0.10980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.key0.g
+      value: 0.050980397
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.key0.r
+      value: 0.7019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.key1.g
+      value: 0.94355357
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.key2.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.key2.g
+      value: 0.73333335
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.key2.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.key3.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.key3.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 980772594719001590, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: gradient.m_NumColorKeys
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3661474411574370437, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3661474411574370437, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6243279210027328794, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1858,3 +1942,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6243279210027328794, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
   m_PrefabInstance: {fileID: 8252303777344225329}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5225031554772349856 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4180774303687390097, guid: f25fe00883d37ee459e1664e2fdaad0f, type: 3}
+  m_PrefabInstance: {fileID: 8252303777344225329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
