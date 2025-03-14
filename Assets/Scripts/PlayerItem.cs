@@ -25,13 +25,8 @@ public class PlayerItem : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        firstAidPanel.SetActive(false);
-        pickingButton.gameObject.SetActive(false);
-
-        if (items == null)
-        {
-            Debug.Log("null");
-        }
+        //firstAidPanel.SetActive(false);
+        //pickingButton.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

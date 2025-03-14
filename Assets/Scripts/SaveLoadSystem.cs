@@ -51,10 +51,11 @@ public class SaveLoadSystem : MonoBehaviour
 
         //Create info from player
         float[] playerPosition = {player.transform.position.x, player.transform.position.y, player.transform.position.z };
-        List<int> itemsId = new List<int>();
+        List<ItemInfoSaveLoad> items = new List<ItemInfoSaveLoad>();
         foreach (var item in player.GetComponent<PlayerItem>().items) 
         {
-            itemsId.Add(item.item.id);
+            ItemInfoSaveLoad itemSave = new ItemInfoSaveLoad(item.item.id, item.quantity);
+            items.Add(itemSave);
         }
         var currentHealth = player.GetComponent<PlayerStats>().currentHealth;
         var hostageRescued = player.GetComponent<PlayerQuest>().hostageRescued;
@@ -62,7 +63,7 @@ public class SaveLoadSystem : MonoBehaviour
         var hostageKilled = player.GetComponent<PlayerQuest>().hostageKilled;
 
         //Create new save load info
-        saveLoadInfo = new SaveLoadInfo(gameStates, itemsId, currentHealth, playerPosition, hostageRescued, enemyKilled, hostageKilled);
+        saveLoadInfo = new SaveLoadInfo(gameStates, items, currentHealth, playerPosition, hostageRescued, enemyKilled, hostageKilled);
 
         //Convert save load info to json
         string saveLoadString = JsonConvert.SerializeObject(saveLoadInfo);
@@ -96,12 +97,13 @@ public class SaveLoadSystem : MonoBehaviour
         //Get info to player
         player.transform.position = new Vector3(saveLoadInfo.playerPosition[0], saveLoadInfo.playerPosition[1], saveLoadInfo.playerPosition[2]);
 
-        foreach (var itemID in saveLoadInfo.itemsID)
+        foreach (var itemLoad in saveLoadInfo.items)
         {
-            var item = ItemsInGame.itemsInstance.items.Find(x => x.id == itemID);
+            var item = ItemsInGame.itemsInstance.items.Find(x => x.id == itemLoad.itemID);
             if (item != null)
             {
-                player.GetComponent<PlayerItem>().PickingUpItem(item);
+                ItemInventory itemInventory = new ItemInventory{ item = item, quantity = itemLoad.quantity };
+                player.GetComponent<PlayerItem>().items.Add(itemInventory);
             }
         }
         player.GetComponent<PlayerStats>().currentHealth = saveLoadInfo.currentHealth;
