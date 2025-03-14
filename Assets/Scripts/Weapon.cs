@@ -69,7 +69,9 @@ public class Weapon : MonoBehaviour
 
     [Header("Ammo And Reload")]
     [SerializeField] private int currentAmmo;
-    [SerializeField] private int maxAmmo = 31;
+    [SerializeField] private int ammoClip = 0;
+    [SerializeField] private int akMaxAmmo = 31;
+    [SerializeField] private int pistolMaxAmmo = 17;
     [SerializeField] private bool isReloading = false;
     [SerializeField] private float reloadTime = 1.5f;
     private TextMeshProUGUI ammoText;
@@ -145,7 +147,7 @@ public class Weapon : MonoBehaviour
                     StartCoroutine(Reload());
                 }
             }
-            else if (currentAmmo != 0 && currentAmmo < maxAmmo && !isReloading)
+            else if (currentAmmo != 0  && !isReloading)
             {
                 if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Machine)
                 {
@@ -167,7 +169,7 @@ public class Weapon : MonoBehaviour
                 }
             }
 
-            ammoText.text = currentAmmo + " / " + maxAmmo;
+            ammoText.text = currentAmmo + " / " + ammoClip;
         }
     }
 
@@ -307,7 +309,22 @@ public class Weapon : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
-        currentAmmo = maxAmmo;
+        if (currentWeaponType == WeaponType.Machine)
+        {
+            int ammoToRefill = akMaxAmmo - currentAmmo;
+            ammoToRefill = (currentAmmo - ammoToRefill) > 0 ? ammoToRefill : currentAmmo;
+            currentAmmo += ammoToRefill;
+            ammoClip -= ammoToRefill; ;
+        }
+        else if (currentWeaponType == WeaponType.Pistol)
+        {
+            int ammoToRefill = pistolMaxAmmo - currentAmmo;
+            ammoToRefill = (currentAmmo - ammoToRefill) > 0 ? ammoToRefill : currentAmmo;
+            currentAmmo += ammoToRefill;
+            ammoClip -= ammoToRefill; ;
+        }
+        
+       
 
         isReloading = false;
     }
