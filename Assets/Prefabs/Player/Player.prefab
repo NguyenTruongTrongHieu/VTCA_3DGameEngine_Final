@@ -772,6 +772,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4e98271e1c60ef549b3240179519b7bf, type: 3}
+      propertyPath: m_TagString
+      value: Pistol
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -831,6 +835,10 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   muzzlePrefab: {fileID: 7829235093502020076}
   muzzlePosition: {fileID: 4411248859483173925}
+  currentAmmo: 17
+  maxAmmo: 18
+  isReloading: 0
+  reloadTime: 1.5
 --- !u!95 &5240723288523292728
 Animator:
   serializedVersion: 7
@@ -966,6 +974,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7489893567846038471, guid: c7ec0e3c8dc442643b5f8785c5f4f187, type: 3}
+      propertyPath: m_TagString
+      value: AK
+      objectReference: {fileID: 0}
     - target: {fileID: 7834752798041465213, guid: c7ec0e3c8dc442643b5f8785c5f4f187, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.03600025
@@ -1063,6 +1075,10 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   muzzlePrefab: {fileID: 8709001316589528650}
   muzzlePosition: {fileID: 2957964312825021242}
+  currentAmmo: 30
+  maxAmmo: 31
+  isReloading: 0
+  reloadTime: 1.5
 --- !u!95 &8632506091180013560
 Animator:
   serializedVersion: 7

@@ -16,6 +16,9 @@ TagManager:
   - RescueButton
   - EnemyPosition
   - HostagePosition
+  - AmmoText
+  - AK
+  - Pistol
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -66,6 +67,14 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject muzzlePrefab;
     [SerializeField] private GameObject muzzlePosition;
 
+    [Header("Ammo And Reload")]
+    [SerializeField] private int currentAmmo;
+    [SerializeField] private int maxAmmo = 31;
+    [SerializeField] private bool isReloading = false;
+    [SerializeField] private float reloadTime = 1.5f;
+    private TextMeshProUGUI ammoText;
+    private Animator reloadAnimator;
+
     private void Awake()
     {
         readyToShoot = true;
@@ -75,6 +84,11 @@ public class Weapon : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (isPlayer)
+        {
+            ammoText = GameObject.FindGameObjectWithTag("AmmoText").GetComponent<TextMeshProUGUI>();
+        }
+        
         audioSource = GetComponent<AudioSource>();
 
         startPosition = transform.localPosition;
@@ -106,6 +120,55 @@ public class Weapon : MonoBehaviour
             burstBulletLeft = bulletsPerBurst;
             FireWeapon();
         }
+
+        if (isPlayer)
+        {
+            //Kiểm tra xem viên đạn còn hay không
+            if (currentAmmo <= 0 && !isReloading)
+            {
+                if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Machine)
+                {
+                    reloadAnimator = GameObject.FindGameObjectWithTag("AK").GetComponent<Animator>();
+                    reloadAnimator.SetTrigger("Reload");
+
+                    isReloading = true;
+                    reloadAnimator.SetTrigger("Reload");
+                    StartCoroutine(Reload());
+                }
+
+                else if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Pistol)
+                {
+                    reloadAnimator = GameObject.FindGameObjectWithTag("Pistol").GetComponent<Animator>();
+                    reloadAnimator.SetTrigger("Reload");
+                    isReloading = true;
+                    reloadAnimator.SetTrigger("Reload");
+                    StartCoroutine(Reload());
+                }
+            }
+            else if (currentAmmo != 0 && currentAmmo < maxAmmo && !isReloading)
+            {
+                if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Machine)
+                {
+                    reloadAnimator = GameObject.FindGameObjectWithTag("AK").GetComponent<Animator>();
+                    reloadAnimator.SetTrigger("Reload");
+
+                    isReloading = true;
+                    reloadAnimator.SetTrigger("Reload");
+                    StartCoroutine(Reload());
+                }
+
+                else if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Pistol)
+                {
+                    reloadAnimator = GameObject.FindGameObjectWithTag("Pistol").GetComponent<Animator>();
+                    reloadAnimator.SetTrigger("Reload");
+                    isReloading = true;
+                    reloadAnimator.SetTrigger("Reload");
+                    StartCoroutine(Reload());
+                }
+            }
+
+            ammoText.text = currentAmmo + " / " + maxAmmo;
+        }
     }
 
     private void FireWeapon()
@@ -117,6 +180,8 @@ public class Weapon : MonoBehaviour
 
         Debug.Log("Shoot");
         readyToShoot = false;
+
+        currentAmmo--;
 
         Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
 
@@ -234,5 +299,16 @@ public class Weapon : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    IEnumerator Reload()
+    {
+        Debug.Log("Reloading...");
+
+        yield return new WaitForSeconds(reloadTime);
+
+        currentAmmo = maxAmmo;
+
+        isReloading = false;
     }
 }
