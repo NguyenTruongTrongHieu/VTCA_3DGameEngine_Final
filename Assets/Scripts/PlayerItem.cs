@@ -19,6 +19,9 @@ public class PlayerItem : MonoBehaviour
 
     [SerializeField] private GameObject firstAidPanel;
     [SerializeField] private Image firstAidImage;
+    [SerializeField] private Image coolDownImage;
+    private float coolDownTime;//To use first aid
+    private bool canUseFirstAid = true;
     [SerializeField] private TextMeshProUGUI firstAidText;
     [SerializeField] private Button pickingButton;
     private bool canPickUpItem;
@@ -30,6 +33,7 @@ public class PlayerItem : MonoBehaviour
     void Start()
     {
         //firstAidPanel.SetActive(false);
+        coolDownImage.enabled = false;
         pickingButton.gameObject.SetActive(false);
         ShowInventory();
     }
@@ -37,9 +41,21 @@ public class PlayerItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        //Count down time
+        coolDownTime += Time.deltaTime;
+        coolDownImage.fillAmount = coolDownTime / 0.5f;
+        if (coolDownTime > 0.5f)
+        {
+            coolDownTime = 0f;
+            canUseFirstAid = true;
+            coolDownImage.enabled = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3) && canUseFirstAid)
         {
             UseItem("FirstAid");
+            canUseFirstAid = false;
+            coolDownImage.enabled = true;
         }
     }
 
