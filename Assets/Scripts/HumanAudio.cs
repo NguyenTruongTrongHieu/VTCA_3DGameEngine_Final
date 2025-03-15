@@ -71,13 +71,11 @@ public class HumamAudio : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Street") && isMoving)
         {
-            Debug.Log("street");
             AudioManager.audioInstance.PlaySFX("FootstepInStreet");
         }
 
         if (collision.gameObject.CompareTag("Floor") && isMoving)
         {
-            Debug.Log("floor");
             AudioManager.audioInstance.PlaySFX("FootstepInFloor");
         }
     }
@@ -86,7 +84,6 @@ public class HumamAudio : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Street") && isMoving)
         {
-            Debug.Log("street");
             //SetDelayTimeForSound("FootstepInStreet", 0.05f);
             if (!audioSource.isPlaying)
             {
@@ -97,7 +94,6 @@ public class HumamAudio : MonoBehaviour
 
         if (other.gameObject.CompareTag("Floor") && isMoving)
         {
-            Debug.Log("floor");
             //SetDelayTimeForSound("FootstepInFloor", 0.05f);
             if (!audioSource.isPlaying)
             {
