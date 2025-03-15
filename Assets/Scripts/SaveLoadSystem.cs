@@ -1,3 +1,4 @@
+using InfimaGames.LowPolyShooterPack;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -61,9 +62,18 @@ public class SaveLoadSystem : MonoBehaviour
         var hostageRescued = player.GetComponent<PlayerQuest>().hostageRescued;
         var enemyKilled = player.GetComponent<PlayerQuest>().enemyKilled;
         var hostageKilled = player.GetComponent<PlayerQuest>().hostageKilled;
+        List<WeaponAmmo> weapons = new List<WeaponAmmo>();
+        for (int i = 0; i < player.transform.GetChild(0).GetChild(0).childCount; i++)
+        {
+            WeaponAmmo weaponAmmo = new WeaponAmmo();
+            weaponAmmo.nameWeapon = player.transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<Weapon>().name;
+            weaponAmmo.currentAmmo = player.transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<Weapon>().currentAmmo;
+            weaponAmmo.ammoClip = player.transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<Weapon>().ammoClip;
+            weapons.Add(weaponAmmo);
+        }
 
         //Create new save load info
-        saveLoadInfo = new SaveLoadInfo(gameStates, items, currentHealth, playerPosition, hostageRescued, enemyKilled, hostageKilled);
+        saveLoadInfo = new SaveLoadInfo(gameStates, items, currentHealth, playerPosition, hostageRescued, enemyKilled, hostageKilled, weapons);
 
         //Convert save load info to json
         string saveLoadString = JsonConvert.SerializeObject(saveLoadInfo);
@@ -110,5 +120,11 @@ public class SaveLoadSystem : MonoBehaviour
         player.GetComponent<PlayerQuest>().hostageRescued = saveLoadInfo.hostageRescued;
         player.GetComponent<PlayerQuest>().enemyKilled = saveLoadInfo.enemyKilled;
         player.GetComponent<PlayerQuest>().hostageKilled = saveLoadInfo.hostageKilled;
+        for (int i = 0; i < saveLoadInfo.weapons.Count; i++)
+        {
+            WeaponAmmo weaponAmmo = saveLoadInfo.weapons[i];
+            player.transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<Weapon>().currentAmmo = weaponAmmo.currentAmmo ;
+            player.transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<Weapon>().ammoClip = weaponAmmo.ammoClip;
+        }
     }
 }

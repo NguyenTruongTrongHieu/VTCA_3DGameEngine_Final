@@ -24,11 +24,14 @@ public class PlayerItem : MonoBehaviour
     private bool canPickUpItem;
     //[SerializeField] private PlayerHealth playerHealth;
 
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //firstAidPanel.SetActive(false);
         pickingButton.gameObject.SetActive(false);
+        ShowInventory();
     }
 
     // Update is called once per frame
@@ -36,7 +39,6 @@ public class PlayerItem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Debug.Log("3");
             UseItem("FirstAid");
         }
     }
