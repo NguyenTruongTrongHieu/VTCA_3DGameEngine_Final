@@ -13,7 +13,9 @@ public class ItemInventory
 public class PlayerItem : MonoBehaviour
 {
     public List<ItemInventory> items = new List<ItemInventory>();
-    [SerializeField] private Weapon playerWeapon;
+    [SerializeField] private Weapon playerAKWeapon;
+    [SerializeField] private Weapon playerPítolWeapon;
+    [SerializeField] private PlayerStats health;
 
     [SerializeField] private GameObject firstAidPanel;
     [SerializeField] private Image firstAidImage;
@@ -26,13 +28,17 @@ public class PlayerItem : MonoBehaviour
     void Start()
     {
         //firstAidPanel.SetActive(false);
-        //pickingButton.gameObject.SetActive(false);
+        pickingButton.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //UseItem("Ammo");
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Debug.Log("3");
+            UseItem("FirstAid");
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -87,43 +93,59 @@ public class PlayerItem : MonoBehaviour
             items.Add(playerItem);
         }
 
+        if (item.name == "Ammo")
+        {
+            UseItem("Ammo");
+        }
+
         ShowInventory();
     }
 
     void UseItem(string nameItem)
     {
-        ItemParameter chooseItem = null;
-        ItemInventory inventory = null;
-        foreach (var item in items)//Check nếu player đã lấy item này rồi
-        {
-            if (item.item.name == nameItem)
-            {
-                chooseItem = item.item;
-                inventory = item;
-            }
-        }
+        ItemInventory inventory = items.Find(i => i.item.name == nameItem);//Check nếu player đã lấy item này rồi
 
-        if (chooseItem == null)
+        if (inventory == null)
         {
+            Debug.Log(nameItem +" null");
             return;
         }
         else
         {
             //Use item
-            if (inventory.quantity <= 0)//Nếu số lượng = 0 thì không dùng được
+            if (inventory.quantity == 0)//Nếu số lượng = 0 thì không dùng được
             {
                 //Có thể xoá item đi khi đã dùng hết
+                items.Remove(inventory);
                 return;
             }
-            inventory.quantity = Mathf.Max(0, inventory.quantity--);
+
+            if (nameItem == "Ammo")
+            {
+                playerAKWeapon.ammoClip += inventory.item.ammo / 2;
+                playerPítolWeapon.ammoClip += inventory.item.ammo / 2;
+                ReduceQuantity(nameItem);
+            }
+
+            if (health.currentHealth != health.maxHealth && nameItem == "FirstAid")//Nếu health đang max thì không cần dùng item
+            {
+                health.currentHealth = Mathf.Min(health.maxHealth, health.currentHealth + inventory.item.healing);
+                health.healthBar.SetHealth(health.currentHealth);
+                ReduceQuantity(nameItem);
+            }
+            else return;
+
+            ShowInventory();
+
         }
     }
 
     void ShowInventory()
     {
-        //foreach (var item in items) {
-        //    Debug.Log($"{item.item.name}; {item.quantity}\n");
-        //}
+        foreach (var item in items)
+        {
+            Debug.Log($"{item.item.name}; {item.quantity}\n");
+        }
 
         //Show first aid
         if (!firstAidPanel.activeSelf)
@@ -141,5 +163,11 @@ public class PlayerItem : MonoBehaviour
     void DropItem()
     { 
         
+    }
+
+    void ReduceQuantity(string nameItem)
+    {
+        items.Find(i => i.item.name == nameItem).quantity = Mathf.Max(0, items.Find(i => i.item.name == nameItem).quantity - 1);
+        Debug.Log(items.Find(i => i.item.name == nameItem).quantity);
     }
 }

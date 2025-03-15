@@ -68,8 +68,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject muzzlePosition;
 
     [Header("Ammo And Reload")]
-    [SerializeField] private int currentAmmo;
-    [SerializeField] private int ammoClip = 0;
+    public int currentAmmo;
+    public int ammoClip = 0;
     [SerializeField] private int akMaxAmmo = 31;
     [SerializeField] private int pistolMaxAmmo = 17;
     [SerializeField] private bool isReloading = false;

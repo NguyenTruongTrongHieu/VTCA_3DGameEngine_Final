@@ -94,7 +94,6 @@ public class EnemyAI : MonoBehaviour
         var distance = Vector3.Distance(initialPosition, transform.position);
         if (distance > returnRange)
         {
-            Debug.Log("return");
             AttackTarget();
             isTargetToPlayer = false;
             chasingToPlayerWhenSaw = true;//Khi quay trở về vị trí, enemy tiếp tục đợi khi nhìn thấy player mới đuổi theo
@@ -183,8 +182,6 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            Debug.Log("Wandering");
-
             var randomPoint = Random.insideUnitSphere * wanderRange;
             randomPoint += initialPosition;
             NavMeshHit hit;

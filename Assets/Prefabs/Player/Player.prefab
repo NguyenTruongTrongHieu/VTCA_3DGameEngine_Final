@@ -171,7 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df3f8f3f14473fc43aa93d65861b3e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWeapon: {fileID: 6870912065895337542}
+  playerAKWeapon: {fileID: 6870912065895337542}
+  "playerP\xEDtolWeapon": {fileID: 4636982001794251693}
+  health: {fileID: 1864174943640935034}
   firstAidPanel: {fileID: 0}
   firstAidImage: {fileID: 0}
   firstAidText: {fileID: 0}
