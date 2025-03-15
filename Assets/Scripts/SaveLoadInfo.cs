@@ -14,6 +14,13 @@ public class ItemInfoSaveLoad
     }
 }
 
+public class WeaponAmmo
+{
+    public string nameWeapon;
+    public int currentAmmo;
+    public int ammoClip;
+}
+
 public class SaveLoadInfo 
 {
     //game states
@@ -33,12 +40,15 @@ public class SaveLoadInfo
     public int enemyKilled;
     public int hostageKilled;
 
+    //ammo
+    public List<WeaponAmmo> weapons = new List<WeaponAmmo>();
+
     public SaveLoadInfo()
     { 
         
     }
 
-    public SaveLoadInfo(string state, List<ItemInfoSaveLoad> items, int currentHealth, float[] playerPosition, int hostageRescued, int enemyKilled, int hostageKilled)
+    public SaveLoadInfo(string state, List<ItemInfoSaveLoad> items, int currentHealth, float[] playerPosition, int hostageRescued, int enemyKilled, int hostageKilled, List<WeaponAmmo> weapons)
     {
         this.state = state;
         this.items = items;
@@ -47,5 +57,6 @@ public class SaveLoadInfo
         this.hostageRescued = hostageRescued;
         this.enemyKilled = enemyKilled;
         this.hostageKilled = hostageKilled;
+        this.weapons = weapons;
     }
 }

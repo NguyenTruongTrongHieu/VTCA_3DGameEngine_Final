@@ -83,7 +83,7 @@ public class PlayerQuest : MonoBehaviour
                 {
                     GameOverManager.overInstance.UpdateInfo(hostageRescued, enemyKilled, hostageKilled);
                     GameOverManager.overInstance.Lose();
-                    GameOverManager.overInstance.gameOverPanel.SetActive(true);
+                    //GameOverManager.overInstance.gameOverPanel.SetActive(true);
                 }
 
                 StartCoroutine(SetUpHostagesKilled());
@@ -100,7 +100,7 @@ public class PlayerQuest : MonoBehaviour
                 {
                     GameOverManager.overInstance.UpdateInfo(hostageRescued, enemyKilled, hostageKilled);
                     GameOverManager.overInstance.Win();
-                    GameOverManager.overInstance.gameOverPanel.SetActive(true);
+                    //GameOverManager.overInstance.gameOverPanel.SetActive(true);
                 }
 
                 hostages.Remove(hostage);
@@ -110,7 +110,7 @@ public class PlayerQuest : MonoBehaviour
 
     void SetUpQuestText()
     {
-        hostageRescuedText.text = $"Hostages saved: {hostageRescued}:{totalHostages}";
+        hostageRescuedText.text = $"Hostages saved: {hostageRescued}/{totalHostages}";
         enemyKilledText.text = $"Enemy killed: {enemyKilled}";
     }
 
