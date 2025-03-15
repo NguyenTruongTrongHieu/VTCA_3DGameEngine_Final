@@ -129,7 +129,7 @@ public class PlayerQuest : MonoBehaviour
                 yield return null;
             }
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.5f);
             alertText.gameObject.SetActive(false);
         }
         yield return null;
