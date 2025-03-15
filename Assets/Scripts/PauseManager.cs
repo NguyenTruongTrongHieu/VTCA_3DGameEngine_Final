@@ -31,6 +31,10 @@ public class PauseManager : MonoBehaviour
     {
         SetSfxButton();
         Cursor.lockState = CursorLockMode.None;
+
+        //Save game
+        SaveLoadSystem.saveLoadInstance.SaveData("NotOver");
+
         GameState.gameStateInstance.currentGameState = GameState.State.pause;
         pausePanel.SetActive(true);
     }

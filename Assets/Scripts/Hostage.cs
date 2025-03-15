@@ -84,6 +84,11 @@ public class Hostage : MonoBehaviour
 
     private void BeingRescue()
     {
+        if (isRescue)
+        {
+            return;
+        }
+
         Debug.Log("Hostage is save");
         animator.SetBool(isRescuehash, true);
         agent.SetDestination(RescuePosition);

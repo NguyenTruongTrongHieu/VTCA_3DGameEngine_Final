@@ -48,18 +48,26 @@ public class GameOverManager : MonoBehaviour
 
     public void Win()
     {
+        //Save game
+        SaveLoadSystem.saveLoadInstance.SaveData("Win");
+
         isOver = true;
         titleText.text = "You Win";
         replay.gameObject.SetActive(false);
+        gameOverPanel.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         GameState.gameStateInstance.currentGameState = GameState.State.over;
     }
 
     public void Lose()
     {
+        //Save game
+        SaveLoadSystem.saveLoadInstance.SaveData("Lose");
+
         isOver = true;
         titleText.text = "You Lose";
         replay.gameObject.SetActive(true);
+        gameOverPanel.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         GameState.gameStateInstance.currentGameState = GameState.State.over;
     }

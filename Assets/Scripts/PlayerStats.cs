@@ -11,8 +11,16 @@ public class PlayerStats : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        if (SaveLoadSystem.saveLoadInstance.isLoadGame)
+        {
+            healthBar.SetHealth(maxHealth);
+            healthBar.SetHealth(currentHealth);
+        }
+        else
+        {
+            currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+        }
     }
 
     // Update is called once per frame
@@ -37,5 +45,8 @@ public class PlayerStats : MonoBehaviour
     public void Die()
     {
         Debug.Log("Player died");
+        GameOverManager.overInstance.UpdateInfo(gameObject.GetComponent<PlayerQuest>().hostageRescued, 
+            gameObject.GetComponent<PlayerQuest>().enemyKilled, gameObject.GetComponent<PlayerQuest>().hostageKilled);
+        GameOverManager.overInstance.Lose();
     }
 }
