@@ -126,7 +126,7 @@ public class Weapon : MonoBehaviour
         if (isPlayer)
         {
             //Kiểm tra xem viên đạn còn hay không
-            if (currentAmmo <= 0 && !isReloading)
+            if (currentAmmo <= 0 && !isReloading && ammoClip != 0)
             {
                 if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Machine)
                 {
@@ -147,7 +147,7 @@ public class Weapon : MonoBehaviour
                     StartCoroutine(Reload());
                 }
             }
-            else if (currentAmmo != 0  && !isReloading)
+            else if (currentAmmo != 0  && !isReloading && ammoClip != 0)
             {
                 if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Machine)
                 {
@@ -180,20 +180,30 @@ public class Weapon : MonoBehaviour
             return;
         }
 
-        Debug.Log("Shoot");
-        readyToShoot = false;
+        if (currentAmmo != 0)
+        {
+            Debug.Log("Shoot");
+            readyToShoot = false;
 
-        currentAmmo--;
+            currentAmmo--;
 
-        Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
+            Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
 
-        //Bắn bằng cách sinh bullet
-        var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
+            //Bắn bằng cách sinh bullet
+            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
 
-        //Chay vfx
-        muzzlePrefab.GetComponent<ParticleSystem>().Play();
-        
-        bullet.transform.forward = shootingDirection;
+            //Chay vfx
+            muzzlePrefab.GetComponent<ParticleSystem>().Play();
+
+            bullet.transform.forward = shootingDirection;
+        }
+
+        else if (currentAmmo == 0)
+        {
+            Debug.Log("Out of ammo");
+        }
+
+
 
         //Dòng ghi chú phía dưới là cách làm viên đạn di chuyển ở script này đã được đưa qua script Bullet.cs
         //var bulletRigidbody = bullet.GetComponent<Rigidbody>();
@@ -312,14 +322,14 @@ public class Weapon : MonoBehaviour
         if (currentWeaponType == WeaponType.Machine)
         {
             int ammoToRefill = akMaxAmmo - currentAmmo;
-            ammoToRefill = (currentAmmo - ammoToRefill) > 0 ? ammoToRefill : currentAmmo;
+            ammoToRefill = (ammoClip - ammoToRefill) > 0 ? ammoToRefill : ammoClip;
             currentAmmo += ammoToRefill;
             ammoClip -= ammoToRefill; ;
         }
         else if (currentWeaponType == WeaponType.Pistol)
         {
             int ammoToRefill = pistolMaxAmmo - currentAmmo;
-            ammoToRefill = (currentAmmo - ammoToRefill) > 0 ? ammoToRefill : currentAmmo;
+            ammoToRefill = (currentAmmo - ammoToRefill) > 0 ? ammoToRefill : ammoClip;
             currentAmmo += ammoToRefill;
             ammoClip -= ammoToRefill; ;
         }
