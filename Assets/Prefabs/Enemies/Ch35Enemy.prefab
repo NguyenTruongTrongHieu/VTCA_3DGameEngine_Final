@@ -863,6 +863,12 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   muzzlePrefab: {fileID: 7671854347791810705}
   muzzlePosition: {fileID: 2938087661990086884}
+  currentAmmo: 0
+  ammoClip: 1000
+  akMaxAmmo: 31
+  pistolMaxAmmo: 17
+  isReloading: 0
+  reloadTime: 1.5
 --- !u!82 &3926329092370307976
 AudioSource:
   m_ObjectHideFlags: 0

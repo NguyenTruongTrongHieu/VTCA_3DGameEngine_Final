@@ -180,9 +180,25 @@ public class Weapon : MonoBehaviour
             return;
         }
 
-        if (currentAmmo != 0)
+        if (!isPlayer)
         {
-            Debug.Log("Shoot");
+            readyToShoot = false;
+
+            Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
+
+            //Bắn bằng cách sinh bullet
+            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
+
+            //Chay vfx
+            muzzlePrefab.GetComponent<ParticleSystem>().Play();
+
+            bullet.transform.forward = shootingDirection;
+
+            AddSound();
+        }
+
+        else if (currentAmmo != 0)
+        {
             readyToShoot = false;
 
             currentAmmo--;
@@ -196,10 +212,16 @@ public class Weapon : MonoBehaviour
             muzzlePrefab.GetComponent<ParticleSystem>().Play();
 
             bullet.transform.forward = shootingDirection;
+
+            AddSound();
         }
 
         else if (currentAmmo == 0)
         {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(AudioManager.audioInstance.sfxSounds.Find(x => x.name.Equals("OutOfAmmo")).audioClip);
+            }
             Debug.Log("Out of ammo");
         }
 
@@ -233,8 +255,6 @@ public class Weapon : MonoBehaviour
             Invoke("FireWeapon", shootingDelay);
         }
 
-        AddSound();
-        ;
     }
 
     private void ResetShot()
@@ -316,6 +336,7 @@ public class Weapon : MonoBehaviour
     IEnumerator Reload()
     {
         Debug.Log("Reloading...");
+        audioSource.PlayOneShot(AudioManager.audioInstance.sfxSounds.Find(x => x.name.Equals("ReloadAmmo")).audioClip);
 
         yield return new WaitForSeconds(reloadTime);
 
