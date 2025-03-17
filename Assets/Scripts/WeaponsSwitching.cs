@@ -25,6 +25,9 @@ public class WeaponsSwitching : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        akIcon = GameObject.FindGameObjectWithTag("AKIcon");
+        pistolIcon = GameObject.FindGameObjectWithTag("PistolIcon");
+
         //Set up weapon
         weapons.Add(new WeaponInfo { weaponPrefab = pistolPrefab });
         weapons.Add(new WeaponInfo { weaponPrefab = PrimaryGunPrefab });
@@ -32,9 +35,7 @@ public class WeaponsSwitching : MonoBehaviour
 
         //ActiveWeapons(0);
         ActiveWeapons(1);
-        akIcon = GameObject.FindGameObjectWithTag("AKIcon");
         akIcon.gameObject.SetActive(true);
-        pistolIcon = GameObject.FindGameObjectWithTag("PistolIcon");
         pistolIcon.gameObject.SetActive(false);
     }
 
@@ -47,9 +48,8 @@ public class WeaponsSwitching : MonoBehaviour
             ActiveWeapons(0);
             //gunsAnim = weapons[0].weaponPrefab.GetComponent<Animator>();
 
-            akIcon = GameObject.FindGameObjectWithTag("AKIcon");
+            
             akIcon.gameObject.SetActive(false);
-            pistolIcon = GameObject.FindGameObjectWithTag("PistolIcon");
             pistolIcon.gameObject.SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) // Primary Gun
@@ -57,9 +57,7 @@ public class WeaponsSwitching : MonoBehaviour
             ActiveWeapons(1);
             //gunsAnim = weapons[1].weaponPrefab.GetComponent<Animator>();
 
-            akIcon = GameObject.FindGameObjectWithTag("AKIcon");
             akIcon.gameObject.SetActive(true);
-            pistolIcon = GameObject.FindGameObjectWithTag("PistolIcon");
             pistolIcon.gameObject.SetActive(false);
         }
     }
