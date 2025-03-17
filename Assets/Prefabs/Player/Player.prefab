@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 200
   topClamp: -90
-  bottomClamp: 90
+  bottomClamp: 60
   playerHead: {fileID: 7269790551252913331}
 --- !u!114 &4448464777252937763
 MonoBehaviour:
@@ -176,6 +176,7 @@ MonoBehaviour:
   health: {fileID: 1864174943640935034}
   firstAidPanel: {fileID: 0}
   firstAidImage: {fileID: 0}
+  coolDownImage: {fileID: 0}
   firstAidText: {fileID: 0}
   pickingButton: {fileID: 0}
 --- !u!114 &808374081365715980
@@ -840,7 +841,7 @@ MonoBehaviour:
   currentAmmo: 17
   ammoClip: 18
   akMaxAmmo: 31
-  pistolMaxAmmo: 17
+  pistolMaxAmmo: 18
   isReloading: 0
   reloadTime: 1.5
 --- !u!95 &5240723288523292728
@@ -1081,7 +1082,7 @@ MonoBehaviour:
   muzzlePosition: {fileID: 2957964312825021242}
   currentAmmo: 30
   ammoClip: 31
-  akMaxAmmo: 30
+  akMaxAmmo: 31
   pistolMaxAmmo: 17
   isReloading: 0
   reloadTime: 1.5

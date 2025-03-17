@@ -72,7 +72,7 @@ public class Weapon : MonoBehaviour
     public int currentAmmo;
     public int ammoClip = 0;
     [SerializeField] private int akMaxAmmo = 31;
-    [SerializeField] private int pistolMaxAmmo = 17;
+    [SerializeField] private int pistolMaxAmmo = 18;
     [SerializeField] private bool isReloading = false;
     [SerializeField] private float reloadTime = 1.5f;
     private TextMeshProUGUI ammoText;
@@ -345,21 +345,38 @@ public class Weapon : MonoBehaviour
 
         if (currentWeaponType == WeaponType.Machine)
         {
-            int ammoToRefill = akMaxAmmo - currentAmmo;
-            ammoToRefill = (ammoClip - ammoToRefill) > 0 ? ammoToRefill : ammoClip;
-            currentAmmo += ammoToRefill;
-            ammoClip -= ammoToRefill; ;
+            if (currentAmmo == 0)
+            {
+                int ammoToRefill = akMaxAmmo - 1 - currentAmmo;
+                ammoToRefill = (ammoClip - ammoToRefill) > 0 ? ammoToRefill : ammoClip;
+                currentAmmo += ammoToRefill;
+                ammoClip -= ammoToRefill;
+            }
+            else if (currentAmmo > 0)
+            {
+                int ammoToRefill = akMaxAmmo - currentAmmo;
+                ammoToRefill = (ammoClip - ammoToRefill) > 0 ? ammoToRefill : ammoClip;
+                currentAmmo += ammoToRefill;
+                ammoClip -= ammoToRefill;
+            } 
         }
         else if (currentWeaponType == WeaponType.Pistol)
         {
-            int ammoToRefill = pistolMaxAmmo - currentAmmo;
-            ammoToRefill = (currentAmmo - ammoToRefill) > 0 ? ammoToRefill : ammoClip;
-            currentAmmo += ammoToRefill;
-            ammoClip -= ammoToRefill; ;
+            if (currentAmmo == 0)
+            {
+                int ammoToRefill = pistolMaxAmmo - 1 - currentAmmo;
+                ammoToRefill = (ammoClip - ammoToRefill) > 0 ? ammoToRefill : ammoClip;
+                currentAmmo += ammoToRefill;
+                ammoClip -= ammoToRefill;
+            }
+            else if (currentAmmo > 0)
+            {
+                int ammoToRefill = pistolMaxAmmo - currentAmmo;
+                ammoToRefill = (ammoClip - ammoToRefill) > 0 ? ammoToRefill : ammoClip;
+                currentAmmo += ammoToRefill;
+                ammoClip -= ammoToRefill;
+            }
         }
-        
-       
-
         isReloading = false;
     }
 }
