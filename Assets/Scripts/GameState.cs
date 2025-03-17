@@ -8,7 +8,8 @@ public class GameState : MonoBehaviour
     { 
         over,
         playing,
-        pause
+        pause,
+        cutscene
     }
 
     public State currentGameState;
