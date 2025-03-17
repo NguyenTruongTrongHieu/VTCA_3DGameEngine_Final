@@ -77,8 +77,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float reloadTime = 1.5f;
     private TextMeshProUGUI ammoText;
     private Animator reloadAnimator;
-    private Image akIcon;
-    private Image pistolIcon;
+    private GameObject akIcon;
+    private GameObject pistolIcon;
 
     private void Awake()
     {
@@ -128,22 +128,6 @@ public class Weapon : MonoBehaviour
 
         if (isPlayer)
         {
-            //Kiem tra loai sung
-            if (currentWeaponType == WeaponType.Machine)
-            {
-                akIcon = GameObject.FindGameObjectWithTag("AKIcon").GetComponent<Image>();
-                akIcon.gameObject.SetActive(true);
-                pistolIcon = GameObject.FindGameObjectWithTag("PistolIcon").GetComponent<Image>();
-                pistolIcon.gameObject.SetActive(false);
-            }
-            else if (currentWeaponType == WeaponType.Pistol)
-            {
-                akIcon = GameObject.FindGameObjectWithTag("AKIcon").GetComponent<Image>();
-                akIcon.gameObject.SetActive(false);
-                pistolIcon = GameObject.FindGameObjectWithTag("PistolIcon").GetComponent<Image>();
-                pistolIcon.gameObject.SetActive(true);
-            }
-
             //Kiểm tra xem viên đạn còn hay không
             if (currentAmmo <= 0 && !isReloading && ammoClip != 0)
             {

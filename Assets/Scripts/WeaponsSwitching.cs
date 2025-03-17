@@ -12,6 +12,9 @@ public class WeaponInfo
 
 public class WeaponsSwitching : MonoBehaviour
 {
+    private GameObject akIcon;
+    private GameObject pistolIcon;
+
     //animation
 
     //Weapons
@@ -29,22 +32,36 @@ public class WeaponsSwitching : MonoBehaviour
 
         //ActiveWeapons(0);
         ActiveWeapons(1);
+        akIcon = GameObject.FindGameObjectWithTag("AKIcon");
+        akIcon.gameObject.SetActive(true);
+        pistolIcon = GameObject.FindGameObjectWithTag("PistolIcon");
+        pistolIcon.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {    
         //Đổi súng
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1)) // Pistol
         {
             ActiveWeapons(0);
             //gunsAnim = weapons[0].weaponPrefab.GetComponent<Animator>();
+
+            akIcon = GameObject.FindGameObjectWithTag("AKIcon");
+            akIcon.gameObject.SetActive(false);
+            pistolIcon = GameObject.FindGameObjectWithTag("PistolIcon");
+            pistolIcon.gameObject.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2)) // Primary Gun
         {
             ActiveWeapons(1);
             //gunsAnim = weapons[1].weaponPrefab.GetComponent<Animator>();
-        }     
+
+            akIcon = GameObject.FindGameObjectWithTag("AKIcon");
+            akIcon.gameObject.SetActive(true);
+            pistolIcon = GameObject.FindGameObjectWithTag("PistolIcon");
+            pistolIcon.gameObject.SetActive(false);
+        }
     }
 
     void ActiveWeapons(int index)
