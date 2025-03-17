@@ -12404,8 +12404,9 @@ MonoBehaviour:
   timelineCamera: {fileID: 280745104}
   timelineRoot: {fileID: 480768358}
   timeline: {fileID: 480768359}
-  GameCanvas: {fileID: 1563327930}
-  time: 12
+  gameCanvas: {fileID: 1563327930}
+  pauseCanvas: {fileID: 2018757268}
+  time: 11.85
 --- !u!1001 &485917428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48658,6 +48659,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d82a4e992bc5e4439cbfa95a0f96838, type: 3}
+--- !u!1 &2018757268 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4710933637866293176, guid: 3d82a4e992bc5e4439cbfa95a0f96838, type: 3}
+  m_PrefabInstance: {fileID: 2018757267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2027421980
 PrefabInstance:
   m_ObjectHideFlags: 0
