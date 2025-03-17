@@ -134,19 +134,16 @@ public class Weapon : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Machine)
                 {
                     reloadAnimator = GameObject.FindGameObjectWithTag("AK").GetComponent<Animator>();
-                    reloadAnimator.SetTrigger("Reload");
-
+                    reloadAnimator.SetTrigger("ReloadNoAmmo");
                     isReloading = true;
-                    reloadAnimator.SetTrigger("Reload");
                     StartCoroutine(Reload());
                 }
 
                 else if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Pistol)
                 {
                     reloadAnimator = GameObject.FindGameObjectWithTag("Pistol").GetComponent<Animator>();
-                    reloadAnimator.SetTrigger("Reload");
+                    reloadAnimator.SetTrigger("ReloadNoAmmo");
                     isReloading = true;
-                    reloadAnimator.SetTrigger("Reload");
                     StartCoroutine(Reload());
                 }
             }
@@ -156,9 +153,7 @@ public class Weapon : MonoBehaviour
                 {
                     reloadAnimator = GameObject.FindGameObjectWithTag("AK").GetComponent<Animator>();
                     reloadAnimator.SetTrigger("Reload");
-
                     isReloading = true;
-                    reloadAnimator.SetTrigger("Reload");
                     StartCoroutine(Reload());
                 }
 
@@ -167,7 +162,6 @@ public class Weapon : MonoBehaviour
                     reloadAnimator = GameObject.FindGameObjectWithTag("Pistol").GetComponent<Animator>();
                     reloadAnimator.SetTrigger("Reload");
                     isReloading = true;
-                    reloadAnimator.SetTrigger("Reload");
                     StartCoroutine(Reload());
                 }
             }
