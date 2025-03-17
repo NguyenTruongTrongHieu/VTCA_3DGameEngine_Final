@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponInfo
 {
@@ -43,7 +44,7 @@ public class WeaponsSwitching : MonoBehaviour
         {
             ActiveWeapons(1);
             //gunsAnim = weapons[1].weaponPrefab.GetComponent<Animator>();
-        }
+        }     
     }
 
     void ActiveWeapons(int index)
