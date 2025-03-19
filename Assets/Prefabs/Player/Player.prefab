@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 200
   topClamp: -90
-  bottomClamp: 60
+  bottomClamp: 40
   playerHead: {fileID: 7269790551252913331}
 --- !u!114 &4448464777252937763
 MonoBehaviour:
