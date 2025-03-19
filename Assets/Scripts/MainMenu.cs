@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button buttonContinue;
     [SerializeField] private Button buttonAcceptContinue;
     [SerializeField] private TextMeshProUGUI lastPlayedText;
+    [SerializeField] private GameObject loadingScreen;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,7 +32,7 @@ public class MainMenu : MonoBehaviour
     {
         SetSfxButton();
         SaveLoadSystem.saveLoadInstance.isLoadGame = false;
-        SceneManager.LoadScene(1);
+        loadingScreen.GetComponent<LoadingScreenBarSystem>().loadingScreen(1);
     }
 
     public void OnExit()
@@ -62,7 +63,7 @@ public class MainMenu : MonoBehaviour
     {
         SetSfxButton();
         SaveLoadSystem.saveLoadInstance.isLoadGame = true;
-        SceneManager.LoadScene(1);
+        loadingScreen.GetComponent<LoadingScreenBarSystem>().loadingScreen(1);
     }
 
     public void SetLastPlayedText()
