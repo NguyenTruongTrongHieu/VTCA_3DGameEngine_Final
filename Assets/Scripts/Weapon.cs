@@ -129,14 +129,14 @@ public class Weapon : MonoBehaviour
         if (isPlayer)
         {
             //Kiểm tra xem viên đạn còn hay không
-            if (currentAmmo <= 0 && !isReloading && ammoClip != 0)
+            if (currentAmmo == 0 && !isReloading && ammoClip != 0)
             {
                 if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Machine)
                 {
                     reloadAnimator = GameObject.FindGameObjectWithTag("AK").GetComponent<Animator>();
                     reloadAnimator.SetTrigger("Reload");
+                    StartCoroutine(SetReloadAnimation());
                     isReloading = true;
-                    reloadAnimator.SetBool("ReloadNoAmmo", true);
                     StartCoroutine(Reload());
                 }
 
@@ -144,8 +144,8 @@ public class Weapon : MonoBehaviour
                 {
                     reloadAnimator = GameObject.FindGameObjectWithTag("Pistol").GetComponent<Animator>();
                     reloadAnimator.SetTrigger("Reload");
+                    StartCoroutine(SetReloadAnimation());
                     isReloading = true;
-                    reloadAnimator.SetBool("ReloadNoAmmo", true);
                     StartCoroutine(Reload());
                 }
             }
@@ -156,7 +156,6 @@ public class Weapon : MonoBehaviour
                     reloadAnimator = GameObject.FindGameObjectWithTag("AK").GetComponent<Animator>();
                     reloadAnimator.SetTrigger("Reload");
                     isReloading = true;
-                    reloadAnimator.SetBool("ReloadNoAmmo", false);
                     StartCoroutine(Reload());
                 }
 
@@ -165,7 +164,6 @@ public class Weapon : MonoBehaviour
                     reloadAnimator = GameObject.FindGameObjectWithTag("Pistol").GetComponent<Animator>();
                     reloadAnimator.SetTrigger("Reload");
                     isReloading = true;
-                    reloadAnimator.SetBool("ReloadNoAmmo", false);
                     StartCoroutine(Reload());
                 }
             }
@@ -376,5 +374,12 @@ public class Weapon : MonoBehaviour
             }
         }
         isReloading = false;
+    }
+
+    IEnumerator SetReloadAnimation()
+    {
+        reloadAnimator.SetBool("ReloadNoAmmo", true);
+        yield return new WaitForSeconds(1.5f);
+        reloadAnimator.SetBool("ReloadNoAmmo", false);
     }
 }
