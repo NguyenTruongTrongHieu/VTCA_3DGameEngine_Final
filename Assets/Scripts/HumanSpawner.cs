@@ -15,16 +15,31 @@ public class HumanSpawner : MonoBehaviour
         AddHostagePositons();
         AddEnemyPositions();
 
-        //Random and spawn prefab hostage
-        SpawnHostages();
+        var player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent <PlayerQuest>().totalHostages = hostagePositions.Count;
 
-        //Random and spawn prefab enemy
-        SpawnEnemies();
+        if (SaveLoadSystem.saveLoadInstance.saveLoadInfo != null && SaveLoadSystem.saveLoadInstance.saveLoadInfo.state == "NotOver" && 
+            SaveLoadSystem.saveLoadInstance.isLoadGame)
+        {
+            //Random and spawn prefab hostage
+            SpawnHostages(SaveLoadSystem.saveLoadInstance.saveLoadInfo.hostageRescued + SaveLoadSystem.saveLoadInstance.saveLoadInfo.hostageKilled);
+
+            //Random and spawn prefab enemy
+            SpawnEnemies(SaveLoadSystem.saveLoadInstance.saveLoadInfo.enemyKilled);
+        }
+        else
+        {
+            //Random and spawn prefab hostage
+            SpawnHostages(0);
+
+            //Random and spawn prefab enemy
+            SpawnEnemies(0);
+        }
+
     }
 
     private void Start()
     {
-        AudioManager.audioInstance.PlayMusic("Game");
     }
 
     void AddEnemyPositions()
@@ -45,10 +60,10 @@ public class HumanSpawner : MonoBehaviour
         }
     }
 
-    void SpawnHostages()
+    void SpawnHostages(int beginLoop)
     {
         int numberOfLoop = hostagePositions.Count;
-        for (int i = 0; i < numberOfLoop; i++)
+        for (int i = beginLoop; i < numberOfLoop; i++)
         {
             int randomPrefab;
             int randomPositon;
@@ -66,10 +81,10 @@ public class HumanSpawner : MonoBehaviour
         }
     }
 
-    void SpawnEnemies()
+    void SpawnEnemies(int beginLoop)
     {
         int numberOfLoop = enemyPositions.Count;
-        for (int i = 0; i < numberOfLoop; i++)
+        for (int i = beginLoop; i < numberOfLoop; i++)
         {
             int randomPrefab;
             int randomPositon;

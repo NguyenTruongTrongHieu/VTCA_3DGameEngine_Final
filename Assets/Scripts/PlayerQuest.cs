@@ -5,16 +5,17 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class PlayerQuest : MonoBehaviour
 {
     [SerializeField] private List<GameObject> hostages = new List<GameObject>();
     [SerializeField] private List<GameObject> enemies = new List<GameObject>();
 
-    [SerializeField] private int totalHostages;
-    [SerializeField] private int hostageRescued;
-    [SerializeField] private int enemyKilled;
-    [SerializeField] private int hostageKilled;
+    public int totalHostages;
+    public int hostageRescued;
+    public int enemyKilled;
+    public int hostageKilled;
 
     [SerializeField] private TextMeshProUGUI hostageRescuedText;
     [SerializeField] private TextMeshProUGUI enemyKilledText;
@@ -25,8 +26,6 @@ public class PlayerQuest : MonoBehaviour
     {
         AddEnemies();
         AddHostages();
-
-        totalHostages = hostages.Count;
     }
 
     // Update is called once per frame
@@ -61,18 +60,33 @@ public class PlayerQuest : MonoBehaviour
 
     void SetUpEnemyKilled()
     {
+        List<int> indexInList = new List<int>();
+        int index = 0;
+
         foreach (var enemy in enemies)
         {
             if (enemy == null)
             {
+                indexInList.Add(index);
                 enemyKilled++;
-                enemies.Remove(enemy);
+                //enemies.Remove(enemy);
             }
+
+            index++;
+        }
+
+        //Delete from list
+        for (int i = 0; i < indexInList.Count; i++)
+        {
+            enemies.RemoveAt(indexInList[i]);
         }
     }
 
     void SetUpHostageRescued()
     {
+        List<int> indexInList = new List<int>();
+        int index = 0;
+
         foreach (var hostage in hostages)
         {
             if (hostage == null)
@@ -84,11 +98,13 @@ public class PlayerQuest : MonoBehaviour
                 {
                     GameOverManager.overInstance.UpdateInfo(hostageRescued, enemyKilled, hostageKilled);
                     GameOverManager.overInstance.Lose();
-                    GameOverManager.overInstance.gameOverPanel.SetActive(true);
+                    //GameOverManager.overInstance.gameOverPanel.SetActive(true);
                 }
 
                 StartCoroutine(SetUpHostagesKilled());
-                hostages.Remove(hostage);
+
+                indexInList.Add(index);
+                //hostages.Remove(hostage);
                 continue;
             }
 
@@ -97,21 +113,30 @@ public class PlayerQuest : MonoBehaviour
                 hostageRescued++;
 
                 //if all hostages have been rescued => win
-                if (hostageKilled >= 3)
+                if (hostageRescued >= totalHostages)
                 {
                     GameOverManager.overInstance.UpdateInfo(hostageRescued, enemyKilled, hostageKilled);
                     GameOverManager.overInstance.Win();
-                    GameOverManager.overInstance.gameOverPanel.SetActive(true);
+                    //GameOverManager.overInstance.gameOverPanel.SetActive(true);
                 }
 
-                hostages.Remove(hostage);
+                indexInList.Add(index);
+                //hostages.Remove(hostage);
             }
+
+            index++;
+        }
+
+        //Delete from list
+        for (int i = 0; i < indexInList.Count; i++)
+        {
+            hostages.RemoveAt(indexInList[i]);
         }
     }
 
     void SetUpQuestText()
     {
-        hostageRescuedText.text = $"Hostages saved: {hostageRescued}:{totalHostages}";
+        hostageRescuedText.text = $"Hostages saved: {hostageRescued}/{totalHostages}";
         enemyKilledText.text = $"Enemy killed: {enemyKilled}";
     }
 
@@ -130,7 +155,7 @@ public class PlayerQuest : MonoBehaviour
                 yield return null;
             }
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.5f);
             alertText.gameObject.SetActive(false);
         }
         yield return null;

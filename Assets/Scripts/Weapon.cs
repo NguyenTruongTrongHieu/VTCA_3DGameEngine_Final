@@ -2,7 +2,9 @@
 using System;
 using System.Collections;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
@@ -66,6 +68,18 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject muzzlePrefab;
     [SerializeField] private GameObject muzzlePosition;
 
+    [Header("Ammo And Reload")]
+    public int currentAmmo;
+    public int ammoClip = 0;
+    [SerializeField] private int akMaxAmmo = 31;
+    [SerializeField] private int pistolMaxAmmo = 18;
+    [SerializeField] private bool isReloading = false;
+    [SerializeField] private float reloadTime = 1.5f;
+    private TextMeshProUGUI ammoText;
+    private Animator reloadAnimator;
+    private GameObject akIcon;
+    private GameObject pistolIcon;
+
     private void Awake()
     {
         readyToShoot = true;
@@ -75,6 +89,11 @@ public class Weapon : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (isPlayer)
+        {
+            ammoText = GameObject.FindGameObjectWithTag("AmmoText").GetComponent<TextMeshProUGUI>();
+        }
+        
         audioSource = GetComponent<AudioSource>();
 
         startPosition = transform.localPosition;
@@ -106,6 +125,49 @@ public class Weapon : MonoBehaviour
             burstBulletLeft = bulletsPerBurst;
             FireWeapon();
         }
+
+        if (isPlayer)
+        {
+            //Kiểm tra xem viên đạn còn hay không
+            if (currentAmmo <= 0 && !isReloading && ammoClip != 0)
+            {
+                if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Machine)
+                {
+                    reloadAnimator = GameObject.FindGameObjectWithTag("AK").GetComponent<Animator>();
+                    reloadAnimator.SetTrigger("ReloadNoAmmo");
+                    isReloading = true;
+                    StartCoroutine(Reload());
+                }
+
+                else if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Pistol)
+                {
+                    reloadAnimator = GameObject.FindGameObjectWithTag("Pistol").GetComponent<Animator>();
+                    reloadAnimator.SetTrigger("ReloadNoAmmo");
+                    isReloading = true;
+                    StartCoroutine(Reload());
+                }
+            }
+            else if (currentAmmo != 0  && !isReloading && ammoClip != 0)
+            {
+                if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Machine)
+                {
+                    reloadAnimator = GameObject.FindGameObjectWithTag("AK").GetComponent<Animator>();
+                    reloadAnimator.SetTrigger("Reload");
+                    isReloading = true;
+                    StartCoroutine(Reload());
+                }
+
+                else if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Pistol)
+                {
+                    reloadAnimator = GameObject.FindGameObjectWithTag("Pistol").GetComponent<Animator>();
+                    reloadAnimator.SetTrigger("Reload");
+                    isReloading = true;
+                    StartCoroutine(Reload());
+                }
+            }
+
+            ammoText.text = currentAmmo + " / " + ammoClip;
+        }
     }
 
     private void FireWeapon()
@@ -115,18 +177,52 @@ public class Weapon : MonoBehaviour
             return;
         }
 
-        Debug.Log("Shoot");
-        readyToShoot = false;
+        if (!isPlayer)
+        {
+            readyToShoot = false;
 
-        Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
+            Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
 
-        //Bắn bằng cách sinh bullet
-        var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
+            //Bắn bằng cách sinh bullet
+            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
 
-        //Chay vfx
-        muzzlePrefab.GetComponent<ParticleSystem>().Play();
-        
-        bullet.transform.forward = shootingDirection;
+            //Chay vfx
+            muzzlePrefab.GetComponent<ParticleSystem>().Play();
+
+            bullet.transform.forward = shootingDirection;
+
+            AddSound();
+        }
+
+        else if (currentAmmo > 0)
+        {
+            readyToShoot = false;
+
+            currentAmmo--;
+
+            Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
+
+            //Bắn bằng cách sinh bullet
+            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
+
+            //Chay vfx
+            muzzlePrefab.GetComponent<ParticleSystem>().Play();
+
+            bullet.transform.forward = shootingDirection;
+
+            AddSound();
+        }
+
+        else if (currentAmmo == 0)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(AudioManager.audioInstance.sfxSounds.Find(x => x.name.Equals("OutOfAmmo")).audioClip);
+            }
+            Debug.Log("Out of ammo");
+        }
+
+
 
         //Dòng ghi chú phía dưới là cách làm viên đạn di chuyển ở script này đã được đưa qua script Bullet.cs
         //var bulletRigidbody = bullet.GetComponent<Rigidbody>();
@@ -156,8 +252,6 @@ public class Weapon : MonoBehaviour
             Invoke("FireWeapon", shootingDelay);
         }
 
-        AddSound();
-        ;
     }
 
     private void ResetShot()
@@ -234,5 +328,49 @@ public class Weapon : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    IEnumerator Reload()
+    {
+        Debug.Log("Reloading...");
+        audioSource.PlayOneShot(AudioManager.audioInstance.sfxSounds.Find(x => x.name.Equals("ReloadAmmo")).audioClip);
+
+        yield return new WaitForSeconds(reloadTime);
+
+        if (currentWeaponType == WeaponType.Machine)
+        {
+            if (currentAmmo == 0)
+            {
+                int ammoToRefill = akMaxAmmo - 1 - currentAmmo;
+                ammoToRefill = (ammoClip - ammoToRefill) > 0 ? ammoToRefill : ammoClip;
+                currentAmmo += ammoToRefill;
+                ammoClip -= ammoToRefill;
+            }
+            else if (currentAmmo > 0)
+            {
+                int ammoToRefill = akMaxAmmo - currentAmmo;
+                ammoToRefill = (ammoClip - ammoToRefill) > 0 ? ammoToRefill : ammoClip;
+                currentAmmo += ammoToRefill;
+                ammoClip -= ammoToRefill;
+            } 
+        }
+        else if (currentWeaponType == WeaponType.Pistol)
+        {
+            if (currentAmmo == 0)
+            {
+                int ammoToRefill = pistolMaxAmmo - 1 - currentAmmo;
+                ammoToRefill = (ammoClip - ammoToRefill) > 0 ? ammoToRefill : ammoClip;
+                currentAmmo += ammoToRefill;
+                ammoClip -= ammoToRefill;
+            }
+            else if (currentAmmo > 0)
+            {
+                int ammoToRefill = pistolMaxAmmo - currentAmmo;
+                ammoToRefill = (ammoClip - ammoToRefill) > 0 ? ammoToRefill : ammoClip;
+                currentAmmo += ammoToRefill;
+                ammoClip -= ammoToRefill;
+            }
+        }
+        isReloading = false;
     }
 }

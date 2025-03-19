@@ -16,6 +16,11 @@ TagManager:
   - RescueButton
   - EnemyPosition
   - HostagePosition
+  - AmmoText
+  - AK
+  - Pistol
+  - AKIcon
+  - PistolIcon
   layers:
   - Default
   - TransparentFX
@@ -52,6 +57,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UIMap
+    uniqueID: 3463046963
     locked: 0
   m_RenderingLayers:
   - Default

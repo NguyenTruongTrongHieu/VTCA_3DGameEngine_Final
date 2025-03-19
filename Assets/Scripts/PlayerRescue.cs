@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,13 +8,14 @@ public class PlayerRescue : MonoBehaviour
     [SerializeField] private float rescueDistance = 2f;
     [SerializeField] private Button rescueButton;
     [SerializeField] private List<GameObject> hostages;
-    private bool canRescue;
+    private bool isRescue;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rescueButton = GameObject.FindWithTag("RescueButton").GetComponent<Button>();
         rescueButton.gameObject.SetActive(false);
+        isRescue = false;
     }
 
     // Update is called once per frame

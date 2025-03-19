@@ -2,7 +2,9 @@ using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerFireManager : MonoBehaviour
 {
@@ -26,6 +28,14 @@ public class PlayerFireManager : MonoBehaviour
     // --- Muzzle ---
     public GameObject muzzlePrefab;
     public GameObject muzzlePosition;
+
+    [Header("Ammo And Reload")]
+    [SerializeField] private int currentAmmo;
+    [SerializeField] private int maxAmmo = 31;
+    public bool isReloading = false;
+    public float reloadTime = 1.5f;
+    public TextMeshProUGUI ammoText;
+    public Animator reloadAnimator;
 
     public enum ShootingMode
     {
@@ -71,7 +81,19 @@ public class PlayerFireManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         //isPlayer = gameObject.tag == "Player" ? true : false;
+
+        if (currentAmmo == -1)
+        {
+            currentAmmo = maxAmmo;
+        }
     }
+
+    private void OnEnable()
+    {
+        isReloading = false;
+        reloadAnimator.SetBool("Reloading", false);
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -93,6 +115,27 @@ public class PlayerFireManager : MonoBehaviour
             burstBulletLeft = bulletsPerBurst;
             FireWeapon();
         }
+
+        //Kiểm tra xem viên đạn còn hay không
+        if (currentAmmo <= 0 && !isReloading)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                isReloading = true;
+                reloadAnimator.SetTrigger("Reload");
+                StartCoroutine(Reload());
+            }
+            return;
+        }
+        else if (currentAmmo != 0 && currentAmmo < maxAmmo && !isReloading)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                isReloading = true;
+                reloadAnimator.SetTrigger("Reload");
+                StartCoroutine(Reload());
+            }
+        }
     }
 
     private void FireWeapon()
@@ -102,6 +145,8 @@ public class PlayerFireManager : MonoBehaviour
 
         Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
 
+        currentAmmo--;
+        
         //Bắn bằng cách sinh bullet
         var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
         var muzzleVFX = Instantiate(muzzlePrefab, muzzlePosition.transform.position, 
@@ -195,5 +240,16 @@ public class PlayerFireManager : MonoBehaviour
             AudioClip clip = AudioManager.audioInstance.sfxSounds.Find(x => x.name == "PistolSingleGun").audioClip;
             audioSource.PlayOneShot(clip);
         }
+    }
+
+    IEnumerator Reload()
+    {
+        Debug.Log("Reloading...");
+
+        yield return new WaitForSeconds(reloadTime);
+
+        currentAmmo = maxAmmo;
+
+        isReloading = false;
     }
 }

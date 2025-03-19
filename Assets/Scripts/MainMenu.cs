@@ -8,6 +8,9 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Button buttonPlay;
     [SerializeField] private Button buttonExit;
+    [SerializeField] private GameObject loadGame;
+    [SerializeField] private Button buttonContinue;
+    [SerializeField] private Button buttonAcceptContinue;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,6 +28,7 @@ public class MainMenu : MonoBehaviour
     public void OnPlay()
     {
         SetSfxButton();
+        SaveLoadSystem.saveLoadInstance.isLoadGame = false;
         SceneManager.LoadScene(1);
     }
 
@@ -37,5 +41,25 @@ public class MainMenu : MonoBehaviour
     public void SetSfxButton()
     {
         AudioManager.audioInstance.PlaySFX("ButtonClick");
+    }
+
+    public void LoadGame()
+    {
+        if (SaveLoadSystem.saveLoadInstance.saveLoadInfo != null)
+        {
+            if (SaveLoadSystem.saveLoadInstance.saveLoadInfo.state == "NotOver")
+            {
+                loadGame.SetActive(true);
+            }
+        }
+
+        SetSfxButton();
+    }
+
+    public void AcceptLoadGame()
+    {
+        SetSfxButton();
+        SaveLoadSystem.saveLoadInstance.isLoadGame = true;
+        SceneManager.LoadScene(1);
     }
 }
