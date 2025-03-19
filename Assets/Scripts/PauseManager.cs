@@ -33,7 +33,7 @@ public class PauseManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         //Save game
-        SaveLoadSystem.saveLoadInstance.SaveData("NotOver");
+        SaveLoadSystem.saveLoadInstance.SaveData("Not Over");
 
         GameState.gameStateInstance.currentGameState = GameState.State.pause;
         pausePanel.SetActive(true);

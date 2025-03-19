@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletRigidbody: {fileID: -342690954588061223}
   bulletSpeed: 100
-  bulletLifeTime: 3
+  bulletLifeTime: 1
   bloodEffect: {fileID: 2420894776574520616}
   explosionEffect: {fileID: 8978806010490897662}
 --- !u!136 &-8878459891701171344
