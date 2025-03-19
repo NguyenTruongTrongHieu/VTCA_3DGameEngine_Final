@@ -60,18 +60,33 @@ public class PlayerQuest : MonoBehaviour
 
     void SetUpEnemyKilled()
     {
+        List<int> indexInList = new List<int>();
+        int index = 0;
+
         foreach (var enemy in enemies)
         {
             if (enemy == null)
             {
+                indexInList.Add(index);
                 enemyKilled++;
-                enemies.Remove(enemy);
+                //enemies.Remove(enemy);
             }
+
+            index++;
+        }
+
+        //Delete from list
+        for (int i = 0; i < indexInList.Count; i++)
+        {
+            enemies.RemoveAt(indexInList[i]);
         }
     }
 
     void SetUpHostageRescued()
     {
+        List<int> indexInList = new List<int>();
+        int index = 0;
+
         foreach (var hostage in hostages)
         {
             if (hostage == null)
@@ -87,7 +102,9 @@ public class PlayerQuest : MonoBehaviour
                 }
 
                 StartCoroutine(SetUpHostagesKilled());
-                hostages.Remove(hostage);
+
+                indexInList.Add(index);
+                //hostages.Remove(hostage);
                 continue;
             }
 
@@ -103,8 +120,17 @@ public class PlayerQuest : MonoBehaviour
                     //GameOverManager.overInstance.gameOverPanel.SetActive(true);
                 }
 
-                hostages.Remove(hostage);
+                indexInList.Add(index);
+                //hostages.Remove(hostage);
             }
+
+            index++;
+        }
+
+        //Delete from list
+        for (int i = 0; i < indexInList.Count; i++)
+        {
+            hostages.RemoveAt(indexInList[i]);
         }
     }
 

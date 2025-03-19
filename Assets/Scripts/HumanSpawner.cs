@@ -40,7 +40,6 @@ public class HumanSpawner : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.audioInstance.PlayMusic("Game");
     }
 
     void AddEnemyPositions()
