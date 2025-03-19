@@ -11,11 +11,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject loadGame;
     [SerializeField] private Button buttonContinue;
     [SerializeField] private Button buttonAcceptContinue;
+    [SerializeField] private TextMeshProUGUI lastPlayedText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         AudioManager.audioInstance.PlayMusic("Menu");
+        SetLastPlayedText();
         GameState.gameStateInstance.currentGameState = GameState.State.playing;
     }
 
@@ -47,7 +49,7 @@ public class MainMenu : MonoBehaviour
     {
         if (SaveLoadSystem.saveLoadInstance.saveLoadInfo != null)
         {
-            if (SaveLoadSystem.saveLoadInstance.saveLoadInfo.state == "NotOver")
+            if (SaveLoadSystem.saveLoadInstance.saveLoadInfo.state == "Not Over")
             {
                 loadGame.SetActive(true);
             }
@@ -61,5 +63,17 @@ public class MainMenu : MonoBehaviour
         SetSfxButton();
         SaveLoadSystem.saveLoadInstance.isLoadGame = true;
         SceneManager.LoadScene(1);
+    }
+
+    public void SetLastPlayedText()
+    {
+        if (SaveLoadSystem.saveLoadInstance.saveLoadInfo == null)
+        {
+            lastPlayedText.text = $"Last played: None";
+        }
+        else
+        {
+            lastPlayedText.text = $"Last played: {SaveLoadSystem.saveLoadInstance.saveLoadInfo.state}";
+        }
     }
 }
