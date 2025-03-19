@@ -83,6 +83,7 @@ public class GameOverManager : MonoBehaviour
         SetSfxButton();
 
         GameState.gameStateInstance.currentGameState = GameState.State.playing;
+        SaveLoadSystem.saveLoadInstance.isLoadGame = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
