@@ -25126,6 +25126,134 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: enemyPositions.Array.size
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: hostagePositions.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1035743419}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[1]'
+      value: 
+      objectReference: {fileID: 909000285}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[2]'
+      value: 
+      objectReference: {fileID: 106780452}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1681653305}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[4]'
+      value: 
+      objectReference: {fileID: 789838344}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[5]'
+      value: 
+      objectReference: {fileID: 759822779}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[6]'
+      value: 
+      objectReference: {fileID: 1475547763}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[7]'
+      value: 
+      objectReference: {fileID: 1924060581}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[8]'
+      value: 
+      objectReference: {fileID: 1907257044}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[9]'
+      value: 
+      objectReference: {fileID: 445389207}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[10]'
+      value: 
+      objectReference: {fileID: 209007010}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[11]'
+      value: 
+      objectReference: {fileID: 649377506}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[12]'
+      value: 
+      objectReference: {fileID: 1843451199}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[13]'
+      value: 
+      objectReference: {fileID: 1394126589}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[14]'
+      value: 
+      objectReference: {fileID: 1848150126}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[15]'
+      value: 
+      objectReference: {fileID: 1343451536}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[16]'
+      value: 
+      objectReference: {fileID: 1325270806}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[17]'
+      value: 
+      objectReference: {fileID: 1748678368}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'enemyPositions.Array.data[18]'
+      value: 
+      objectReference: {fileID: 934356618}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'hostagePositions.Array.data[0]'
+      value: 
+      objectReference: {fileID: 995337775}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'hostagePositions.Array.data[1]'
+      value: 
+      objectReference: {fileID: 998471781}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'hostagePositions.Array.data[2]'
+      value: 
+      objectReference: {fileID: 59661764}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'hostagePositions.Array.data[3]'
+      value: 
+      objectReference: {fileID: 534629814}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'hostagePositions.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1045815193}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'hostagePositions.Array.data[5]'
+      value: 
+      objectReference: {fileID: 24324197}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'hostagePositions.Array.data[6]'
+      value: 
+      objectReference: {fileID: 1685826642}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'hostagePositions.Array.data[7]'
+      value: 
+      objectReference: {fileID: 365457550}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'hostagePositions.Array.data[8]'
+      value: 
+      objectReference: {fileID: 393478640}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'hostagePositions.Array.data[9]'
+      value: 
+      objectReference: {fileID: 1942400997}
+    - target: {fileID: 1340429900681087382, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
+      propertyPath: 'hostagePositions.Array.data[10]'
+      value: 
+      objectReference: {fileID: 1384579920}
     - target: {fileID: 6741753572973086992, guid: a27b91ae80bbf1c45a7362b8267c6de8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.734035
@@ -31706,9 +31834,9 @@ OcclusionArea:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296123161}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
-  m_IsViewVolume: 0
+  m_Size: {x: 250, y: 81, z: 231}
+  m_Center: {x: 156.28, y: 41, z: 116}
+  m_IsViewVolume: 1
 --- !u!4 &1296123163
 Transform:
   m_ObjectHideFlags: 0
