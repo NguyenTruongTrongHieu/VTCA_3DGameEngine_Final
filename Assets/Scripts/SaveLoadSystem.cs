@@ -80,7 +80,7 @@ public class SaveLoadSystem : MonoBehaviour
         //Save to playerprefs
         PlayerPrefs.SetString("PlayerInfo", saveLoadString);
         PlayerPrefs.Save();
-
+        Debug.Log($" {saveLoadInfo.playerPosition[0]} , {saveLoadInfo.playerPosition[1]} , {saveLoadInfo.playerPosition[2]}");
     }
 
     public void LoadData()

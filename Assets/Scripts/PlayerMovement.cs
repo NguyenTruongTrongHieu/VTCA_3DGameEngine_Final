@@ -36,7 +36,13 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        
+
+        if (SaveLoadSystem.saveLoadInstance.isLoadGame)
+        {
+            transform.position = new Vector3(SaveLoadSystem.saveLoadInstance.saveLoadInfo.playerPosition[0],
+                SaveLoadSystem.saveLoadInstance.saveLoadInfo.playerPosition[1],
+                SaveLoadSystem.saveLoadInstance.saveLoadInfo.playerPosition[2]);
+        }
     }
 
     // Update is called once per frame
