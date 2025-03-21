@@ -9,8 +9,8 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class PlayerQuest : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> hostages = new List<GameObject>();
-    [SerializeField] private List<GameObject> enemies = new List<GameObject>();
+    public List<GameObject> hostages = new List<GameObject>();
+    public List<GameObject> enemies = new List<GameObject>();
 
     public int totalHostages;
     public int hostageRescued;
@@ -24,8 +24,8 @@ public class PlayerQuest : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        AddEnemies();
         AddHostages();
+        SetUpQuestText();
     }
 
     // Update is called once per frame
@@ -67,9 +67,12 @@ public class PlayerQuest : MonoBehaviour
         {
             if (enemy == null)
             {
-                indexInList.Add(index);
-                enemyKilled++;
-                //enemies.Remove(enemy);
+                if (!SaveLoadSystem.saveLoadInstance.saveLoadInfo.indexEnemies.Contains(index))
+                {
+                    SaveLoadSystem.saveLoadInstance.saveLoadInfo.indexEnemies.Add(index);
+                    indexInList.Add(index);
+                    enemyKilled++;
+                }
             }
 
             index++;
@@ -78,7 +81,7 @@ public class PlayerQuest : MonoBehaviour
         //Delete from list
         for (int i = 0; i < indexInList.Count; i++)
         {
-            enemies.RemoveAt(indexInList[i]);
+            //enemies.RemoveAt(indexInList[i]);
         }
     }
 
@@ -138,6 +141,7 @@ public class PlayerQuest : MonoBehaviour
     {
         hostageRescuedText.text = $"Hostages saved: {hostageRescued}/{totalHostages}";
         enemyKilledText.text = $"Enemy killed: {enemyKilled}";
+        Debug.Log(enemyKilled);
     }
 
     IEnumerator SetUpHostagesKilled()

@@ -18,28 +18,24 @@ public class HumanSpawner : MonoBehaviour
         var player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent <PlayerQuest>().totalHostages = hostagePositions.Count;
 
+
         if (SaveLoadSystem.saveLoadInstance.saveLoadInfo != null && 
             SaveLoadSystem.saveLoadInstance.isLoadGame)
         {
             //Random and spawn prefab hostage
             SpawnHostages(SaveLoadSystem.saveLoadInstance.saveLoadInfo.hostageRescued + SaveLoadSystem.saveLoadInstance.saveLoadInfo.hostageKilled);
-
-            //Random and spawn prefab enemy
-            SpawnEnemies(SaveLoadSystem.saveLoadInstance.saveLoadInfo.enemyKilled);
         }
         else
         {
             //Random and spawn prefab hostage
             SpawnHostages(0);
-
-            //Random and spawn prefab enemy
-            SpawnEnemies(0);
         }
 
     }
 
     private void Start()
     {
+        SpawnEnemies(0);
     }
 
     void AddEnemyPositions()
@@ -83,11 +79,19 @@ public class HumanSpawner : MonoBehaviour
 
     void SpawnEnemies(int beginLoop)
     {
+        var playerQuest = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerQuest>();
+
         int numberOfLoop = enemyPositions.Count;
         for (int i = beginLoop; i < numberOfLoop; i++)
         {
+            if (SaveLoadSystem.saveLoadInstance.saveLoadInfo.indexEnemies.Contains(i))//if enemy at this position is killed, skip
+            {
+                playerQuest.enemies.Add(null);
+                continue;
+            }
+
             int randomPrefab;
-            int randomPositon;
+            //int randomPositon;
             //random a enemy prefab
             do
             {
@@ -96,9 +100,10 @@ public class HumanSpawner : MonoBehaviour
             while (human[randomPrefab].tag != "Enemy");
 
             //random position
-            randomPositon = Random.Range(0, enemyPositions.Count);
-            human[randomPrefab].SpawnEntity(enemyPositions[randomPositon].transform.position);
-            enemyPositions.RemoveAt(randomPositon);
+            //randomPositon = Random.Range(0, enemyPositions.Count);
+            var enemy = human[randomPrefab].SpawnEntityHavingReturnGameObject(enemyPositions[i].transform.position);
+            
+            playerQuest.enemies.Add(enemy);
         }
     }
 }

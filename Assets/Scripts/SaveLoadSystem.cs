@@ -72,7 +72,8 @@ public class SaveLoadSystem : MonoBehaviour
         }
 
         //Create new save load info
-        saveLoadInfo = new SaveLoadInfo(gameStates, items, currentHealth, playerPosition, hostageRescued, enemyKilled, hostageKilled, weapons);
+        saveLoadInfo = new SaveLoadInfo(gameStates, items, currentHealth, playerPosition, hostageRescued, enemyKilled, hostageKilled, 
+            weapons, saveLoadInfo.indexEnemies);
 
         //Convert save load info to json
         string saveLoadString = JsonConvert.SerializeObject(saveLoadInfo);
