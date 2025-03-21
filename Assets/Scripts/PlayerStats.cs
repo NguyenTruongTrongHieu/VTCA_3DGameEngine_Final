@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (SaveLoadSystem.saveLoadInstance.isLoadGame)
         {
-            healthBar.SetHealth(maxHealth);
+            healthBar.SetMaxHealth(maxHealth);
             healthBar.SetHealth(currentHealth);
         }
         else
