@@ -8,6 +8,7 @@ public class GameCanvas : MonoBehaviour
         if (SaveLoadSystem.saveLoadInstance.isLoadGame)
         {
             SaveLoadSystem.saveLoadInstance.LoadInfoToPlayer();
+            Debug.Log($" {SaveLoadSystem.saveLoadInstance.saveLoadInfo.playerPosition[0]} , {SaveLoadSystem.saveLoadInstance.saveLoadInfo.playerPosition[1]} , {SaveLoadSystem.saveLoadInstance.saveLoadInfo.playerPosition[2]}");
         }
     }
 

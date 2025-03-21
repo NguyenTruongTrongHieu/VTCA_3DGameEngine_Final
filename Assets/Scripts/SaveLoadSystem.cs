@@ -20,22 +20,21 @@ public class SaveLoadSystem : MonoBehaviour
         {
             saveLoadInstance = this;
             DontDestroyOnLoad(gameObject);
+
+            LoadData();
         }
         else
         {
             Destroy(gameObject);
         }
-
-        ZPlayerPrefs.Initialize("ConCac", "concac");
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        LoadData();
         if (saveLoadInfo != null)
         {
-            Debug.Log(saveLoadInfo.ToString());
+            Debug.Log(saveLoadInfo.state.ToString());
         }
     }
 
@@ -81,7 +80,7 @@ public class SaveLoadSystem : MonoBehaviour
         //Save to playerprefs
         PlayerPrefs.SetString("PlayerInfo", saveLoadString);
         PlayerPrefs.Save();
-
+        Debug.Log($" {saveLoadInfo.playerPosition[0]} , {saveLoadInfo.playerPosition[1]} , {saveLoadInfo.playerPosition[2]}");
     }
 
     public void LoadData()

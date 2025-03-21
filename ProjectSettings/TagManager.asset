@@ -21,6 +21,7 @@ TagManager:
   - Pistol
   - AKIcon
   - PistolIcon
+  - duongdan
   layers:
   - Default
   - TransparentFX

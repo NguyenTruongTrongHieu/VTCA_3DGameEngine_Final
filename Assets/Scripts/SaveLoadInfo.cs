@@ -43,9 +43,18 @@ public class SaveLoadInfo
     //ammo
     public List<WeaponAmmo> weapons = new List<WeaponAmmo>();
 
+
+
     public SaveLoadInfo()
-    { 
-        
+    {
+        this.state = "None";
+        this.items = new List<ItemInfoSaveLoad>();
+        this.currentHealth = 100;
+        this.playerPosition = new float[3];
+        this.hostageRescued = 0;
+        this.enemyKilled = 0;
+        this.hostageKilled = 0;
+        this.weapons = new List<WeaponAmmo>();
     }
 
     public SaveLoadInfo(string state, List<ItemInfoSaveLoad> items, int currentHealth, float[] playerPosition, int hostageRescued, int enemyKilled, int hostageKilled, List<WeaponAmmo> weapons)

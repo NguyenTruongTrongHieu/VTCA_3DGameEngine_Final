@@ -6,19 +6,19 @@ using UnityEngine;
 public class HumanSpawner : MonoBehaviour
 {
     [SerializeField] private List<SpawnerHumanScriptable> human = new List<SpawnerHumanScriptable>();
-    [SerializeField] private List<Vector3> enemyPositions = new List<Vector3>();
-    [SerializeField] private List<Vector3> hostagePositions = new List<Vector3>();
+    [SerializeField] private List<GameObject> enemyPositions = new List<GameObject>();
+    [SerializeField] private List<GameObject> hostagePositions = new List<GameObject>();
 
     private void Awake()
     {
         //Find position for enemy and hostage
-        AddHostagePositons();
-        AddEnemyPositions();
+        //AddHostagePositons();
+        //AddEnemyPositions();
 
         var player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent <PlayerQuest>().totalHostages = hostagePositions.Count;
 
-        if (SaveLoadSystem.saveLoadInstance.saveLoadInfo != null && SaveLoadSystem.saveLoadInstance.saveLoadInfo.state == "NotOver" && 
+        if (SaveLoadSystem.saveLoadInstance.saveLoadInfo != null && 
             SaveLoadSystem.saveLoadInstance.isLoadGame)
         {
             //Random and spawn prefab hostage
@@ -46,7 +46,7 @@ public class HumanSpawner : MonoBehaviour
     {
         foreach (var enemyPosition in GameObject.FindGameObjectsWithTag("EnemyPosition"))
         {
-            enemyPositions.Add(enemyPosition.transform.position);
+            enemyPositions.Add(enemyPosition);
             Destroy(enemyPosition);
         }
     }
@@ -55,7 +55,7 @@ public class HumanSpawner : MonoBehaviour
     {
         foreach (var hostagePosition in GameObject.FindGameObjectsWithTag("HostagePosition"))
         {
-            hostagePositions.Add(hostagePosition.transform.position);
+            hostagePositions.Add(hostagePosition);
             Destroy(hostagePosition);
         }
     }
@@ -76,7 +76,7 @@ public class HumanSpawner : MonoBehaviour
 
             //random position
             randomPositon = Random.Range(0, hostagePositions.Count);
-            human[randomPrefab].SpawnEntity(hostagePositions[randomPositon]);
+            human[randomPrefab].SpawnEntity(hostagePositions[randomPositon].transform.position);
             hostagePositions.RemoveAt(randomPositon);
         }
     }
@@ -97,7 +97,7 @@ public class HumanSpawner : MonoBehaviour
 
             //random position
             randomPositon = Random.Range(0, enemyPositions.Count);
-            human[randomPrefab].SpawnEntity(enemyPositions[randomPositon]);
+            human[randomPrefab].SpawnEntity(enemyPositions[randomPositon].transform.position);
             enemyPositions.RemoveAt(randomPositon);
         }
     }
