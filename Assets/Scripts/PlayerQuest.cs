@@ -93,6 +93,7 @@ public class PlayerQuest : MonoBehaviour
                 SaveLoadSystem.saveLoadInstance.saveLoadInfo.indexHostages.Add(index);
 
                 hostageKilled++;
+                totalHostages--;
 
                 //if 3 hostages have been killed => lose
                 if (hostageKilled >= 3)
