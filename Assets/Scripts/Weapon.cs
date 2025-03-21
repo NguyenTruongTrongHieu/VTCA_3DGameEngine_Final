@@ -120,7 +120,7 @@ public class Weapon : MonoBehaviour
             isShooting = Input.GetKeyDown(KeyCode.Mouse0);
         }
 
-        if (readyToShoot && isShooting)
+        if (readyToShoot && isShooting && !isReloading)
         {
             burstBulletLeft = bulletsPerBurst;
             FireWeapon();
@@ -129,9 +129,9 @@ public class Weapon : MonoBehaviour
         if (isPlayer)
         {
             //Kiểm tra xem viên đạn còn hay không
-            if (currentAmmo == 0 && !isReloading && ammoClip != 0)
+            if (currentAmmo == 0 && !isReloading && ammoClip != 0 )
             {
-                if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Machine)
+                if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Machine && currentAmmo < akMaxAmmo)
                 {
                     reloadAnimator = GameObject.FindGameObjectWithTag("AK").GetComponent<Animator>();
                     reloadAnimator.SetTrigger("Reload");
@@ -140,7 +140,7 @@ public class Weapon : MonoBehaviour
                     StartCoroutine(Reload());
                 }
 
-                else if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Pistol)
+                else if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Pistol && currentAmmo < pistolMaxAmmo)
                 {
                     reloadAnimator = GameObject.FindGameObjectWithTag("Pistol").GetComponent<Animator>();
                     reloadAnimator.SetTrigger("Reload");
@@ -151,7 +151,7 @@ public class Weapon : MonoBehaviour
             }
             else if (currentAmmo != 0  && !isReloading && ammoClip != 0)
             {
-                if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Machine)
+                if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Machine && currentAmmo < akMaxAmmo)
                 {
                     reloadAnimator = GameObject.FindGameObjectWithTag("AK").GetComponent<Animator>();
                     reloadAnimator.SetTrigger("Reload");
@@ -159,7 +159,7 @@ public class Weapon : MonoBehaviour
                     StartCoroutine(Reload());
                 }
 
-                else if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Pistol)
+                else if (Input.GetKeyDown(KeyCode.R) && currentWeaponType == WeaponType.Pistol && currentAmmo < pistolMaxAmmo)
                 {
                     reloadAnimator = GameObject.FindGameObjectWithTag("Pistol").GetComponent<Animator>();
                     reloadAnimator.SetTrigger("Reload");
