@@ -16,6 +16,7 @@ public class GameCanvas : MonoBehaviour
         else
         {
             SaveLoadSystem.saveLoadInstance.saveLoadInfo.indexEnemies = new List<int>();
+            SaveLoadSystem.saveLoadInstance.saveLoadInfo.indexHostages = new List<int>();
         }
     }
 

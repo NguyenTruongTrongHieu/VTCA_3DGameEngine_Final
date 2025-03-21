@@ -24,8 +24,6 @@ public class PlayerQuest : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        AddHostages();
-        SetUpQuestText();
     }
 
     // Update is called once per frame
@@ -60,7 +58,6 @@ public class PlayerQuest : MonoBehaviour
 
     void SetUpEnemyKilled()
     {
-        List<int> indexInList = new List<int>();
         int index = 0;
 
         foreach (var enemy in enemies)
@@ -70,30 +67,31 @@ public class PlayerQuest : MonoBehaviour
                 if (!SaveLoadSystem.saveLoadInstance.saveLoadInfo.indexEnemies.Contains(index))
                 {
                     SaveLoadSystem.saveLoadInstance.saveLoadInfo.indexEnemies.Add(index);
-                    indexInList.Add(index);
                     enemyKilled++;
                 }
             }
 
             index++;
         }
-
-        //Delete from list
-        for (int i = 0; i < indexInList.Count; i++)
-        {
-            //enemies.RemoveAt(indexInList[i]);
-        }
     }
 
     void SetUpHostageRescued()
     {
-        List<int> indexInList = new List<int>();
         int index = 0;
 
         foreach (var hostage in hostages)
         {
+            if (SaveLoadSystem.saveLoadInstance.saveLoadInfo.indexHostages.Contains(index))
+            {
+                index++;
+                continue;
+            }
+
             if (hostage == null)
             {
+
+                SaveLoadSystem.saveLoadInstance.saveLoadInfo.indexHostages.Add(index);
+
                 hostageKilled++;
 
                 //if 3 hostages have been killed => lose
@@ -106,13 +104,12 @@ public class PlayerQuest : MonoBehaviour
 
                 StartCoroutine(SetUpHostagesKilled());
 
-                indexInList.Add(index);
-                //hostages.Remove(hostage);
-                continue;
             }
 
-            if (hostage.GetComponent<Hostage>().isRescue)
+            else if (hostage.GetComponent<Hostage>().isRescue)
             {
+                SaveLoadSystem.saveLoadInstance.saveLoadInfo.indexHostages.Add(index);
+
                 hostageRescued++;
 
                 //if all hostages have been rescued => win
@@ -122,18 +119,9 @@ public class PlayerQuest : MonoBehaviour
                     GameOverManager.overInstance.Win();
                     //GameOverManager.overInstance.gameOverPanel.SetActive(true);
                 }
-
-                indexInList.Add(index);
-                //hostages.Remove(hostage);
             }
 
             index++;
-        }
-
-        //Delete from list
-        for (int i = 0; i < indexInList.Count; i++)
-        {
-            hostages.RemoveAt(indexInList[i]);
         }
     }
 
@@ -141,7 +129,6 @@ public class PlayerQuest : MonoBehaviour
     {
         hostageRescuedText.text = $"Hostages saved: {hostageRescued}/{totalHostages}";
         enemyKilledText.text = $"Enemy killed: {enemyKilled}";
-        Debug.Log(enemyKilled);
     }
 
     IEnumerator SetUpHostagesKilled()
