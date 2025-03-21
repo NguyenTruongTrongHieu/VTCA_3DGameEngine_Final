@@ -12,9 +12,6 @@ public class HumanSpawner : MonoBehaviour
     private void Awake()
     {
 
-        var player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent <PlayerQuest>().totalHostages = hostagePositions.Count;
-
 
     }
 
@@ -22,6 +19,9 @@ public class HumanSpawner : MonoBehaviour
     {
         SpawnEnemies(0);
         SpawnHostages(0);
+
+        var playerQuest = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerQuest>();
+        playerQuest.totalHostages = playerQuest.hostages.Count - playerQuest.hostageKilled;
     }
 
     void AddEnemyPositions()
