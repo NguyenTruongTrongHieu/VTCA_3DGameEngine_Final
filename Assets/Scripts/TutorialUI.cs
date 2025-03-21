@@ -8,17 +8,24 @@ public class TutorialUI : MonoBehaviour
     [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private TextMeshProUGUI textContent;
     [SerializeField] private string[] content;
+
+    private bool check = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         tutorialPanel.SetActive(true);
-        textContent.text = content[0];
+        textContent.text = "";
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(ShowContent());
+        if (check)
+        {
+            StartCoroutine(ShowContent());
+            check = false;
+        } 
     }
 
     IEnumerator ShowContent()
