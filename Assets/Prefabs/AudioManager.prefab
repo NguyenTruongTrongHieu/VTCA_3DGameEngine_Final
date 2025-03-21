@@ -75,7 +75,7 @@ MonoBehaviour:
   - name: PickUpItem
     audioClip: {fileID: 8300000, guid: 19b05ea55273549f095e571d853f1d52, type: 3}
   - name: ThanksMale
-    audioClip: {fileID: 8300000, guid: 5b55818f589ddcb41a4c65100423419d, type: 3}
+    audioClip: {fileID: 8300000, guid: 1719b1b316081704db5e20cf73228d9e, type: 3}
   - name: ThanksFemale
     audioClip: {fileID: 8300000, guid: b92e49a470ac3af47b3becc44f3b1409, type: 3}
   - name: ScaredFemale
