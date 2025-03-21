@@ -29,7 +29,7 @@ public class PlayerRescue : MonoBehaviour
         GameObject.FindGameObjectsWithTag("Hostage", hostages);
         foreach (GameObject hostage in hostages) 
         {
-            if (Vector3.Distance(transform.position, hostage.transform.position) <= rescueDistance)// && !hostage.GetComponent<Hostage>().isRescue
+            if (Vector3.Distance(transform.position, hostage.transform.position) <= rescueDistance && !hostage.GetComponent<Hostage>().isRescue)// && !hostage.GetComponent<Hostage>().isRescue
             {
                 rescueButton.gameObject.SetActive(true);
                 break;
