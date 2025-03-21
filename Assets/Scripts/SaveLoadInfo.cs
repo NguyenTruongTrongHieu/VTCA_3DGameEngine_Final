@@ -43,7 +43,8 @@ public class SaveLoadInfo
     //ammo
     public List<WeaponAmmo> weapons = new List<WeaponAmmo>();
 
-
+    //Enemy position
+    public List<int> indexEnemies = new List<int>();
 
     public SaveLoadInfo()
     {
@@ -55,9 +56,11 @@ public class SaveLoadInfo
         this.enemyKilled = 0;
         this.hostageKilled = 0;
         this.weapons = new List<WeaponAmmo>();
+        this.indexEnemies = new List<int>();
     }
 
-    public SaveLoadInfo(string state, List<ItemInfoSaveLoad> items, int currentHealth, float[] playerPosition, int hostageRescued, int enemyKilled, int hostageKilled, List<WeaponAmmo> weapons)
+    public SaveLoadInfo(string state, List<ItemInfoSaveLoad> items, int currentHealth, float[] playerPosition, 
+        int hostageRescued, int enemyKilled, int hostageKilled, List<WeaponAmmo> weapons, List<int> indexEnemies)
     {
         this.state = state;
         this.items = items;
@@ -67,5 +70,6 @@ public class SaveLoadInfo
         this.enemyKilled = enemyKilled;
         this.hostageKilled = hostageKilled;
         this.weapons = weapons;
+        this.indexEnemies = indexEnemies;
     }
 }

@@ -11,4 +11,9 @@ public class SpawnerHumanScriptable : ScriptableObject
     { 
         Instantiate(humanPrefab, position, Quaternion.identity);
     }
+
+    public GameObject SpawnEntityHavingReturnGameObject(Vector3 position)
+    {
+        return Instantiate(humanPrefab, position, Quaternion.identity);
+    }
 }

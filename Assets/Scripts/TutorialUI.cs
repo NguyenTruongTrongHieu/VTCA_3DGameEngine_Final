@@ -21,6 +21,11 @@ public class TutorialUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SaveLoadSystem.saveLoadInstance.isLoadGame)
+        {
+            tutorialPanel.SetActive(false);
+            return;
+        }
         if (check)
         {
             StartCoroutine(ShowContent());
@@ -34,7 +39,7 @@ public class TutorialUI : MonoBehaviour
         {
             textContent.text = "";
             textContent.text = content[i];
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1.5f);
         }
         gameObject.SetActive(false);
     }
