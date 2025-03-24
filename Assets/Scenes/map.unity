@@ -1595,6 +1595,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4655183673858625277, guid: 524505b4fbf57394e8b0aaab23cad19f, type: 3}
   m_PrefabInstance: {fileID: 178803984}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &181190838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5960127419506979015, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+  m_PrefabInstance: {fileID: 1989289319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &181190839 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7470547301249449908, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+  m_PrefabInstance: {fileID: 1989289319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &181190840 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5122570221079597878, guid: 90e873a7a7deeb24ab7b184b66cda693, type: 3}
+  m_PrefabInstance: {fileID: 1989289319}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &184057235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1972,6 +1993,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1516627248259688007, guid: 7ca9d338f070f3f449beb9d53b1f8a91, type: 3}
+      propertyPath: akIcon
+      value: 
+      objectReference: {fileID: 181190839}
+    - target: {fileID: 1516627248259688007, guid: 7ca9d338f070f3f449beb9d53b1f8a91, type: 3}
+      propertyPath: pistolIcon
+      value: 
+      objectReference: {fileID: 181190838}
     - target: {fileID: 1864174943640935034, guid: 7ca9d338f070f3f449beb9d53b1f8a91, type: 3}
       propertyPath: healthBar
       value: 
@@ -2008,6 +2037,10 @@ PrefabInstance:
       propertyPath: hostageRescuedText
       value: 
       objectReference: {fileID: 1989289321}
+    - target: {fileID: 4636982001794251693, guid: 7ca9d338f070f3f449beb9d53b1f8a91, type: 3}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 181190840}
     - target: {fileID: 6620019246401654891, guid: 7ca9d338f070f3f449beb9d53b1f8a91, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -2064,6 +2097,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6870912065895337542, guid: 7ca9d338f070f3f449beb9d53b1f8a91, type: 3}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 181190840}
     - target: {fileID: 6898883351737471179, guid: 7ca9d338f070f3f449beb9d53b1f8a91, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 191

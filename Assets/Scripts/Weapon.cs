@@ -75,7 +75,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private int pistolMaxAmmo = 18;
     [SerializeField] private bool isReloading = false;
     [SerializeField] private float reloadTime = 1.5f;
-    private TextMeshProUGUI ammoText;
+    [SerializeField] private TextMeshProUGUI ammoText;
     private Animator reloadAnimator;
     private GameObject akIcon;
     private GameObject pistolIcon;
@@ -89,10 +89,6 @@ public class Weapon : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (isPlayer)
-        {
-            ammoText = GameObject.FindGameObjectWithTag("AmmoText").GetComponent<TextMeshProUGUI>();
-        }
         
         audioSource = GetComponent<AudioSource>();
 

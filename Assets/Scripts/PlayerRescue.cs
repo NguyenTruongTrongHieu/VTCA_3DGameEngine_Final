@@ -13,7 +13,6 @@ public class PlayerRescue : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rescueButton = GameObject.FindWithTag("RescueButton").GetComponent<Button>();
         rescueButton.gameObject.SetActive(false);
         isRescue = false;
     }
