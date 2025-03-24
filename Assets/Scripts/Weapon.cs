@@ -73,7 +73,7 @@ public class Weapon : MonoBehaviour
     public int ammoClip = 0;
     [SerializeField] private int akMaxAmmo = 31;
     [SerializeField] private int pistolMaxAmmo = 18;
-    [SerializeField] private bool isReloading = false;
+    public bool isReloading = false;
     [SerializeField] private float reloadTime = 1.5f;
     [SerializeField] private TextMeshProUGUI ammoText;
     private Animator reloadAnimator;

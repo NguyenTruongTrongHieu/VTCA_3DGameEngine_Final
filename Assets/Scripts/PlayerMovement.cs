@@ -137,12 +137,6 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Shooting");
             anim.SetTrigger("Shoot");
         }
-
-        if (Input.GetKeyDown(KeyCode.R) && isAiming == false)
-        {
-            Debug.Log("Reloading");
-            anim.SetTrigger("Reload");
-        }
     }
 
     private void AimDownSide()
