@@ -22,6 +22,7 @@ TagManager:
   - AKIcon
   - PistolIcon
   - duongdan
+  - CanhCua
   layers:
   - Default
   - TransparentFX
