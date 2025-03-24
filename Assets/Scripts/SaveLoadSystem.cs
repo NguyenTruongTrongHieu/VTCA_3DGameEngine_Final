@@ -95,6 +95,11 @@ public class SaveLoadSystem : MonoBehaviour
 
         //Convert json to info
         saveLoadInfo = JsonConvert.DeserializeObject<SaveLoadInfo>(saveLoadString);
+
+        if (saveLoadInfo == null)
+        { 
+            saveLoadInfo = new SaveLoadInfo();
+        }
     }
 
     public void LoadInfoToPlayer()
