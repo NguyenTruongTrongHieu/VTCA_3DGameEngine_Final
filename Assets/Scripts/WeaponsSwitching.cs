@@ -12,8 +12,8 @@ public class WeaponInfo
 
 public class WeaponsSwitching : MonoBehaviour
 {
-    private GameObject akIcon;
-    private GameObject pistolIcon;
+    [SerializeField] private GameObject akIcon;
+    [SerializeField] private GameObject pistolIcon;
 
     //animation
 
@@ -25,9 +25,6 @@ public class WeaponsSwitching : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        akIcon = GameObject.FindGameObjectWithTag("AKIcon");
-        pistolIcon = GameObject.FindGameObjectWithTag("PistolIcon");
-
         //Set up weapon
         weapons.Add(new WeaponInfo { weaponPrefab = pistolPrefab });
         weapons.Add(new WeaponInfo { weaponPrefab = PrimaryGunPrefab });
