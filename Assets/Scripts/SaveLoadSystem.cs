@@ -107,6 +107,9 @@ public class SaveLoadSystem : MonoBehaviour
         //Find Player
         var player = GameObject.FindGameObjectWithTag("Player");
 
+        //Turn off controller component to avoid player move
+        player.GetComponent<CharacterController>().enabled = false;
+
         //Get info to player
         player.transform.position = new Vector3(saveLoadInfo.playerPosition[0], saveLoadInfo.playerPosition[1], saveLoadInfo.playerPosition[2]);
 
@@ -129,5 +132,8 @@ public class SaveLoadSystem : MonoBehaviour
             player.transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<Weapon>().currentAmmo = weaponAmmo.currentAmmo ;
             player.transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<Weapon>().ammoClip = weaponAmmo.ammoClip;
         }
+
+
+        player.GetComponent<CharacterController>().enabled = true;
     }
 }
